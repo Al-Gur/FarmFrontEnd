@@ -1,6 +1,5 @@
 import {type ReactNode, useState} from "react";
-import type {LoginProps} from "../utils/Interfaces.ts"
-import type {UserDto} from "../utils/Interfaces.ts"
+import type {LoginProps, UserDto} from "../utils/Interfaces.ts"
 
 function Login({setLogin, setPassword}: LoginProps): ReactNode {
     const [registration, setRegistration] = useState(false);
@@ -20,7 +19,10 @@ function Login({setLogin, setPassword}: LoginProps): ReactNode {
 
         fetch("http://localhost:8080/user/login", requestOptions)
             .then((response) => response.json())
-            .then((result:UserDto) => {console.log(result); setLogin(result.login)})
+            .then((result: UserDto) => {
+                console.log(result);
+                setLogin(result.login)
+            })
             .catch((error) => console.error(error));
     }
 
