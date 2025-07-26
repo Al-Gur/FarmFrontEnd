@@ -73,13 +73,16 @@ function App() {
             {/*</div>*/}
             <h1>Farm</h1>
             <User login={login} setLogin={setLogin}/>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 10)}>
+            <div className="card container-fluid">
+                <div className="row">
+                <button className="float-start col-5 me-3"
+                         onClick={() => setCount((count) => count + 10)}>
                     count is {count}
                 </button>
-                <button onClick={() => submit()}>
+                <button className="float-end  col-5  me-3" onClick={() => submit()}>
                     Submit
                 </button>
+                </div>
                 <label>{showProducts()}</label>
             </div>
         </>

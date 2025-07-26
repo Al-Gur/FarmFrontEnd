@@ -7,7 +7,7 @@ function User({login, setLogin}: LoginProps): ReactNode {
     const [password, setPassword] = useState(``);
 
     return (
-        <div>
+        <div className="container-fluid">
             {
                 login ?
                     <Logged login={login} setLogin={setLogin} password={password} setPassword={setPassword}/>
