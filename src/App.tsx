@@ -77,7 +77,7 @@ function App() {
 
             <div className="container-fluid ">
                 <div className="row">
-                    <label className="card col-5 me-3">{showProducts()}</label>
+                    <label className="card col-6 pe-3">{showProducts()}</label>
                     <User login={login} setLogin={setLogin}/>
                 </div>
                 <button className="col-5 mt-3" onClick={() => submit()}>

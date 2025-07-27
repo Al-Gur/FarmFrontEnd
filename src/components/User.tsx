@@ -7,7 +7,7 @@ function User({login, setLogin}: LoginProps): ReactNode {
     const [password, setPassword] = useState(``);
 
     return (
-        <div className="container col-5 w-auto card ">
+        <div className="container col-6 pb-3 w-auto card ">
             {
                 login ?
                     <Logged login={login} setLogin={setLogin} password={password} setPassword={setPassword}/>

@@ -1,9 +1,15 @@
 #root {
-    min-width: 1000px;
+    min-width: 100%;
+    min-height: 735px;
     margin: 0 auto;
     padding: 2rem;
     text-align: center;
-    background-color: #535bf2;
+    /*background-color: #535bf2;*/
+    background-image: url("../public/Field.jpg");
+}
+
+h1 {
+    color: #50bb50;
 }
 
 .logo {
