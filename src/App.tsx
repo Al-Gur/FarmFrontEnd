@@ -1,16 +1,11 @@
 import {useState} from 'react'
 import './App.css'
 import User from "./components/User.tsx";
+import type {Product} from "./utils/Interfaces.ts";
+import Products from "./components/Products.tsx";
 
-interface Product {
-    id: string,
-    name: string,
-    quantity: number,
-    producer: string
-}
 
 function App() {
-    const [count, setCount] = useState(0);
     const [login, setLogin] = useState(``);
     //const [listProducts, setListProducts] = useState<string>(``);
     const [listProducts, setListProducts] = useState<Product[]>([]);
@@ -34,35 +29,6 @@ function App() {
             .catch((error) => console.error(error));
     }
 
-    const showProducts = () => {
-        return (
-            <>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>n</th>
-                        <th>Name</th>
-                        <th>Quantity</th>
-                        <th>Producer</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {
-                        listProducts.map((value, index) =>
-                            <tr key={index}>
-                                <td>{index}</td>
-                                <td>{value.name}</td>
-                                <td>{value.quantity}</td>
-                                <td>{value.producer}</td>
-                            </tr>
-                        )
-                    }
-                    </tbody>
-                </table>
-            </>
-        );
-    }
-
     return (
         <>
             {/*<div>*/}
@@ -77,7 +43,7 @@ function App() {
 
             <div className="container-fluid ">
                 <div className="row">
-                    <label className="card col-6 pe-3">{showProducts()}</label>
+                    <Products listProducts={listProducts}/>
                     <User login={login} setLogin={setLogin}/>
                 </div>
                 <button className="col-5 mt-3" onClick={() => submit()}>

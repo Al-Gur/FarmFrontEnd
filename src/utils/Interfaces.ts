@@ -16,3 +16,14 @@ export interface UserDto {
     fullNames: string,
     roles: string[]
 }
+
+export interface Product {
+    id: string,
+    name: string,
+    quantity: number,
+    producer: string
+}
+
+export interface ProductProps {
+    listProducts: Product[]
+}
