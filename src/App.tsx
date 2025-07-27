@@ -36,28 +36,30 @@ function App() {
 
     const showProducts = () => {
         return (
-            <table>
-                <thead>
-                <tr>
-                    <th>n</th>
-                    <th>Name</th>
-                    <th>Quantity</th>
-                    <th>Producer</th>
-                </tr>
-                </thead>
-                <tbody>
-                {
-                    listProducts.map((value, index) =>
-                        <tr key={index}>
-                            <td>{index}</td>
-                            <td>{value.name}</td>
-                            <td>{value.quantity}</td>
-                            <td>{value.producer}</td>
-                        </tr>
-                    )
-                }
-                </tbody>
-            </table>
+            <>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>n</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Producer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        listProducts.map((value, index) =>
+                            <tr key={index}>
+                                <td>{index}</td>
+                                <td>{value.name}</td>
+                                <td>{value.quantity}</td>
+                                <td>{value.producer}</td>
+                            </tr>
+                        )
+                    }
+                    </tbody>
+                </table>
+            </>
         );
     }
 
@@ -72,18 +74,15 @@ function App() {
             {/*  </a>*/}
             {/*</div>*/}
             <h1>Farm</h1>
-            <User login={login} setLogin={setLogin}/>
-            <div className="card container-fluid">
+
+            <div className="container-fluid ">
                 <div className="row">
-                <button className="float-start col-5 me-3"
-                         onClick={() => setCount((count) => count + 10)}>
-                    count is {count}
-                </button>
-                <button className="float-end  col-5  me-3" onClick={() => submit()}>
+                    <label className="card col-5 me-3">{showProducts()}</label>
+                    <User login={login} setLogin={setLogin}/>
+                </div>
+                <button className="col-5 mt-3" onClick={() => submit()}>
                     Submit
                 </button>
-                </div>
-                <label>{showProducts()}</label>
             </div>
         </>
     )

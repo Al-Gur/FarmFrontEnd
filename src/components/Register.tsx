@@ -29,23 +29,23 @@ function Register({setLogin, setPassword, setRegistration}: RegisterProps): Reac
     return (
         <div className="card bg-info-subtle">
             <div className="row mb-3">
-                <label htmlFor="loginInput" className="col-6">Login:</label>
+                <label htmlFor="loginInput" className="col-6 text-end">Login:</label>
                 <input type="text" id="loginInput" name="loginInput" value={newLogin} className="col-6"
                        onChange={(e) => newLogin = e.target.value}/>
             </div>
             <div className="row mb-3">
-                <label htmlFor="password" className="col-6">Password:</label>
+                <label htmlFor="password" className="col-6 text-end">Password:</label>
                 <input type="password" id="password" name="password" value={newPassword} className="col-6"
                        onChange={(e) => newPassword = e.target.value}/>
             </div>
             <div className="row mb-3">
-                <label htmlFor="passwordCopy" className="col-6">Confirm password:</label>
+                <label htmlFor="passwordCopy" className="col-6 text-end">Confirm password:</label>
                 <input type="password" id="passwordCopy" name="passwordCopy" value={newPasswordCopy}
                        className="col-6"
                        onChange={(e) => newPasswordCopy = e.target.value}/>
             </div>
             <div className="row mb-3">
-                <label htmlFor="fullName" className="col-6">Full name:</label>
+                <label htmlFor="fullName" className="col-6 text-end">Full name:</label>
                 <input type="text" id="fullName" name="fullName" value={newFullName} className="col-6"
                        onChange={(e) => newFullName = e.target.value}/>
             </div>
