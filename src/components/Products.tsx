@@ -1,9 +1,9 @@
 import {type ReactNode} from "react";
-import type {ProductProps} from "../utils/Interfaces.ts";
-import ProductList from "./ProductList.tsx";
+import type {Product, ProductsProps} from "../utils/Interfaces.ts";
+import AllProductList from "./AllProductList.tsx";
 
 
-function Products({listProducts, setListProducts}: ProductProps): ReactNode {
+function Products({listProducts, setListProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
 
     const refreshProducts = async () => {
         const requestOptions = {
@@ -27,7 +27,8 @@ function Products({listProducts, setListProducts}: ProductProps): ReactNode {
     return (
         <label className="card col-6 me-3">
             <h2>All products</h2>
-            <ProductList listProducts={listProducts}/>
+            <AllProductList listProducts={listProducts} setListProducts={setListProducts}
+            listProducts2={listProducts2} setListProducts2={setListProducts2}/>
             <button className="mt-3" onClick={() => refreshProducts()}>
                 Refresh
             </button>

@@ -26,8 +26,10 @@ function App() {
 
             <div className="container-fluid ">
                 <div className="row">
-                    <Products listProducts={allProducts} setListProducts={setAllProducts}/>
-                    <User login={login} setLogin={setLogin} listProducts={allProducts} setListProducts={setTakenProducts}/>
+                    <Products listProducts={allProducts} setListProducts={setAllProducts}
+                    listProducts2={takenProducts} setListProducts2={setTakenProducts}/>
+                    <User login={login} setLogin={setLogin}
+                          listProducts={takenProducts} setListProducts={setTakenProducts}/>
                 </div>
             </div>
         </>

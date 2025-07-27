@@ -7,13 +7,16 @@ export interface Product {
     producer: string
 }
 
-export interface ProductProps {
+export interface ProductsProps {
     listProducts: Product[],
-    setListProducts: (list: Product[]) => void
+    setListProducts: (list: Product[]) => void,
+    listProducts2: Product[],
+    setListProducts2: (list: Product[]) => void
 }
 
 export interface ProductListProps {
-    listProducts: Product[]
+    listProducts: Product[],
+    listProducts2: Product[]
 }
 
 

@@ -1,6 +1,6 @@
 import type {ReactNode} from "react";
 import type {LoggedProps} from "../utils/Interfaces.ts"
-import TakenProductList from "./ProductList.tsx";
+import TakenProductList from "./AllProductList.tsx";
 
 
 function Logged({login, setLogin, password, setPassword, listProducts, setListProducts}: LoggedProps): ReactNode {

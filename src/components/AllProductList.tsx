@@ -1,14 +1,14 @@
 import {type ReactNode} from "react";
-import {type ProductListProps} from "../utils/Interfaces.ts";
+import type {ProductsProps} from "../utils/Interfaces.ts";
 
-function ProductList({listProducts}: ProductListProps): ReactNode {
+function AllProductList({listProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
 
     return (
         <div>
             <table>
                 <thead>
                 <tr>
-                    <th>N</th>
+                    <th>Nu</th>
                     <th>Name</th>
                     <th>Image</th>
                     <th>Category</th>
@@ -19,7 +19,13 @@ function ProductList({listProducts}: ProductListProps): ReactNode {
                 <tbody>
                 {
                     listProducts.map((value, index) =>
-                        <tr key={index}>
+                        <tr key={index} onClick={() => {
+                            const takenQuantity = prompt("Enter quantity", "1");
+                            if (takenQuantity) {
+                                setListProducts2([...listProducts2, {...value, quantity: +takenQuantity}]);
+                                value.quantity-=+takenQuantity;
+                            }
+                        }}>
                             <td>{index + 1}</td>
                             <td>{value.name}</td>
                             <td>{
@@ -40,4 +46,4 @@ function ProductList({listProducts}: ProductListProps): ReactNode {
 }
 
 
-export default ProductList
+export default AllProductList
