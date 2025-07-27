@@ -8,26 +8,9 @@ import Products from "./components/Products.tsx";
 function App() {
     const [login, setLogin] = useState(``);
     //const [listProducts, setListProducts] = useState<string>(``);
-    const [listProducts, setListProducts] = useState<Product[]>([]);
+    const [allProducts, setAllProducts] = useState<Product[]>([]);
+    const [takenProducts, setTakenProducts] = useState<Product[]>([]);
 
-    const submit = async () => {
-        const requestOptions = {
-            method: "GET"//,
-            // redirect: "follow"
-        };
-
-        fetch("http://localhost:8080/products/showall", requestOptions)
-            .then((response) => {
-                //console.log(response.text());
-                return response.json();
-            })
-            .then(result => {
-                console.log(result);
-                return result;
-            })
-            .then((result: Product[]) => setListProducts(result))
-            .catch((error) => console.error(error));
-    }
 
     return (
         <>
@@ -43,12 +26,9 @@ function App() {
 
             <div className="container-fluid ">
                 <div className="row">
-                    <Products listProducts={listProducts}/>
-                    <User login={login} setLogin={setLogin}/>
+                    <Products listProducts={allProducts} setListProducts={setAllProducts}/>
+                    <User login={login} setLogin={setLogin} listProducts={allProducts} setListProducts={setTakenProducts}/>
                 </div>
-                <button className="col-5 mt-3" onClick={() => submit()}>
-                    Submit
-                </button>
             </div>
         </>
     )

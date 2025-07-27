@@ -30,7 +30,7 @@ function Login({setLogin, setPassword}: SetAuthProps): ReactNode {
         registration ?
             <Register setLogin={setLogin} setPassword={setPassword} setRegistration={setRegistration}/>
             :
-            <div className="card bg-success-subtle">
+            <div className="container card bg-success-subtle">
                 <div className="row mb-3">
                     <label htmlFor="loginInput" className="col-4">Login:</label>
                     <input type="text" id="loginInput" name="loginInput" value={newLogin}

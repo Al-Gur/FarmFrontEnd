@@ -1,16 +1,17 @@
 import {type ReactNode, useState} from "react";
-import type {LoginProps} from "../utils/Interfaces.ts";
+import type {UserProps} from "../utils/Interfaces.ts";
 import Logged from "./Logged.tsx";
 import Login from "./Login.tsx";
 
-function User({login, setLogin}: LoginProps): ReactNode {
+function User({login, setLogin, listProducts, setListProducts}: UserProps): ReactNode {
     const [password, setPassword] = useState(``);
 
     return (
-        <div className="container col-6 pb-3 w-auto card ">
+        <div className="col-5 pb-3 card ">
             {
                 login ?
-                    <Logged login={login} setLogin={setLogin} password={password} setPassword={setPassword}/>
+                    <Logged login={login} setLogin={setLogin} password={password} setPassword={setPassword}
+                            listProducts={listProducts} setListProducts={setListProducts}/>
                     : <Login setLogin={setLogin} setPassword={setPassword}/>
             }
         </div>

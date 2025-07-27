@@ -1,18 +1,20 @@
 import type {ReactNode} from "react";
-import type {AuthProps} from "../utils/Interfaces.ts"
+import type {LoggedProps} from "../utils/Interfaces.ts"
+import TakenProductList from "./ProductList.tsx";
 
 
-function Logged({login, setLogin, password, setPassword}: AuthProps): ReactNode {
+function Logged({login, setLogin, password, setPassword, listProducts, setListProducts}: LoggedProps): ReactNode {
     const logOut = () => {
         setLogin("");
         setPassword("");
     }
 
     return (
-        <>
+        <div className="container">
             <h2>{login}</h2>
             <button onClick={logOut}>Log out</button>
-        </>
+            <TakenProductList listProducts={listProducts} setListProducts={setListProducts}/>
+        </div>
     )
 }
 

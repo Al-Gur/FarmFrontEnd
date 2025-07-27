@@ -27,7 +27,7 @@ function Register({setLogin, setPassword, setRegistration}: RegisterProps): Reac
     }
 
     return (
-        <div className="card bg-info-subtle">
+        <div className="container card bg-info-subtle">
             <div className="row mb-3">
                 <label htmlFor="loginInput" className="col-6 text-end">Login:</label>
                 <input type="text" id="loginInput" name="loginInput" value={newLogin} className="col-6"
