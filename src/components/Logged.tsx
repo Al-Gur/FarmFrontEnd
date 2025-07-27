@@ -1,8 +1,8 @@
 import type {ReactNode} from "react";
-import type {LoginProps} from "../utils/Interfaces.ts"
+import type {AuthProps} from "../utils/Interfaces.ts"
 
 
-function Logged({login, setLogin, password, setPassword}: LoginProps): ReactNode {
+function Logged({login, setLogin, password, setPassword}: AuthProps): ReactNode {
     const logOut = () => {
         setLogin("");
         setPassword("");
