@@ -1,6 +1,7 @@
 import {type ReactNode} from "react";
 import type {Product, ProductsProps} from "../utils/Interfaces.ts";
-import AllProductList from "./AllProductList.tsx";
+// import AllProductList from "./AllProductList.tsx";
+import ProductList from "./ProductList.tsx";
 
 
 function Products({listProducts, setListProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
@@ -27,7 +28,7 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
     return (
         <label className="card col-6 me-3">
             <h2>All products</h2>
-            <AllProductList listProducts={listProducts} setListProducts={setListProducts}
+            <ProductList listProducts={listProducts} setListProducts={setListProducts}
             listProducts2={listProducts2} setListProducts2={setListProducts2}/>
             <button className="mt-3" onClick={() => refreshProducts()}>
                 Refresh
