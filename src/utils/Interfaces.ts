@@ -14,6 +14,12 @@ export interface ProductsProps {
     setListProducts2: (list: Product[]) => void
 }
 
+export interface ProductCardProps {
+    value: Product,
+    index: number,
+    onCardClick: () => void
+}
+
 export interface ProductListProps {
     listProducts: Product[],
     listProducts2: Product[]
