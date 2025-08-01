@@ -1,7 +1,18 @@
 .product {
+    width: 220px;
+    height: 220px;
     padding: 5px;
     border: solid black 2px;
     margin: 5px;
+}
+
+.product-number {
+    float: left;
+    color: #535bf2;
+}
+
+.product-name {
+    font-size: 1.5em;
 }
 
 .flex-container {

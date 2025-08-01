@@ -5,11 +5,43 @@ import './ProductList.css'
 function ProductList({listProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
 
     return (
-        <div className="flex-container">
-            <div className="product">1111111111111111111111111111111111</div>
-            <div className="product">22222222222222222</div>
-            <div className="product">333333333333333333</div>
-        </div>
+        <section className="flex-container">
+            {
+                listProducts.map((value, index) =>
+                    <div className="product" key={index} onClick={() => {
+                        const takenQuantity = prompt("Enter quantity", "1");
+                        if (takenQuantity) {
+                            setListProducts2([...listProducts2, {...value, quantity: +takenQuantity}]);
+                            value.quantity -= +takenQuantity;
+                        }
+                    }}>
+                        <div className="product-number">
+                            {index + 1}
+                        </div>
+                        <div className="product-image">
+                            {
+                                value.image ?
+                                    <img src={value.image} alt={value.name} className="w-25"/>
+                                    : ""
+                            }
+                        </div>
+                        <div className="product-name">
+                            {value.name}
+                        </div>
+                        <div className="product-category">
+                            {value.category}
+                        </div>
+                        <div className="product-quantity">
+                            {value.quantity}
+                        </div>
+                        <div className="product-producer">
+                            {value.producer}
+                        </div>
+
+                    </div>
+                )
+            }
+        </section>
     );
 }
 
