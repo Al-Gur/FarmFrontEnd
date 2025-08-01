@@ -28,14 +28,16 @@ function ProductList({listProducts, listProducts2, setListProducts2}: ProductsPr
                         <div className="product-name">
                             {value.name}
                         </div>
-                        <div className="product-category">
-                            {value.category}
-                        </div>
+                        {
+                            value.category ?
+                                <div className="product-category">{"Category: " + value.category}</div>
+                                : ""
+                        }
                         <div className="product-quantity">
-                            {value.quantity}
+                            Quantity: {value.quantity}
                         </div>
                         <div className="product-producer">
-                            {value.producer}
+                            Producer: {value.producer}
                         </div>
 
                     </div>

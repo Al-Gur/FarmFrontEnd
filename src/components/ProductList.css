@@ -1,9 +1,9 @@
 .product {
-    width: 220px;
-    height: 220px;
+    width: 250px;
+    height: 250px;
     padding: 5px;
     border: solid black 2px;
-    margin: 5px;
+    margin: 10px;
 }
 
 .product-number {
@@ -20,4 +20,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    /*border: blue solid 5px;*/
+    /*margin: 0;*/
 }
