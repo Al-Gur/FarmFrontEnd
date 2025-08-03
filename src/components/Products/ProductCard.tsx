@@ -19,6 +19,9 @@ function ProductCard({value, index, onCardClick}: ProductCardProps): ReactNode {
                 {value.name}
             </div>
             <div className="product-quantity">
+                Quantity: {value.price}
+            </div>
+            <div className="product-quantity">
                 Quantity: {value.quantity}
             </div>
             {

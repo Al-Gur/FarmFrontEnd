@@ -3,7 +3,7 @@ import type {UserProps} from "../../utils/Interfaces.ts";
 import Logged from "./Logged.tsx";
 import Login from "./Login.tsx";
 
-function User({login, setLogin, listProducts, setListProducts}: UserProps): ReactNode {
+function User({login, setLogin, listProducts, setListProducts, listProducts2, setListProducts2}: UserProps): ReactNode {
     const [password, setPassword] = useState(``);
 
     return (
@@ -11,7 +11,8 @@ function User({login, setLogin, listProducts, setListProducts}: UserProps): Reac
             {
                 login ?
                     <Logged login={login} setLogin={setLogin} password={password} setPassword={setPassword}
-                            listProducts={listProducts} setListProducts={setListProducts}/>
+                            listProducts={listProducts} setListProducts={setListProducts}
+                            listProducts2={listProducts2} setListProducts2={setListProducts2}/>
                     : <Login setLogin={setLogin} setPassword={setPassword}/>
             }
         </div>

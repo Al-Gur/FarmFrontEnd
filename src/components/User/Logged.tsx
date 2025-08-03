@@ -1,6 +1,7 @@
 import type {ReactNode} from "react";
 import type {LoggedProps} from "../../utils/Interfaces.ts"
 import ProductList from "../Products/ProductList.tsx";
+import Basket from "./Basket.tsx";
 
 
 function Logged({login, setLogin, password, setPassword, listProducts, setListProducts,
@@ -14,7 +15,7 @@ function Logged({login, setLogin, password, setPassword, listProducts, setListPr
         <div className="container">
             <h2>{login}</h2>
             <button onClick={logOut}>Log out</button>
-            <ProductList listProducts={listProducts} setListProducts={setListProducts}
+            <Basket listProducts={listProducts} setListProducts={setListProducts}
                          listProducts2={listProducts2} setListProducts2={setListProducts2}/>
         </div>
     )

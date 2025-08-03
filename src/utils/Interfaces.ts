@@ -3,6 +3,7 @@ export interface Product {
     name: string,
     image: string,
     category: string,
+    price: number,
     quantity: number,
     producer: string
 }
@@ -31,6 +32,8 @@ export interface UserProps {
     setLogin: (login: string) => void,
     listProducts: Product[],
     setListProducts: (list: Product[]) => void
+    listProducts2: Product[],
+    setListProducts2: (list: Product[]) => void
 }
 
 export interface LoggedProps {

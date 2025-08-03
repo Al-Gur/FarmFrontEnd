@@ -29,7 +29,9 @@ function App() {
                     <Products listProducts={allProducts} setListProducts={setAllProducts}
                     listProducts2={takenProducts} setListProducts2={setTakenProducts}/>
                     <User login={login} setLogin={setLogin}
-                          listProducts={takenProducts} setListProducts={setTakenProducts}/>
+                          listProducts={takenProducts} setListProducts={setTakenProducts}
+                          listProducts2={takenProducts} setListProducts2={setTakenProducts}
+                    />
                 </div>
             </div>
         </>
