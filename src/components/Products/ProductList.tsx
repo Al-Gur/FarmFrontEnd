@@ -1,5 +1,5 @@
 import {type ReactNode} from "react";
-import type {ProductsProps} from "../utils/Interfaces.ts";
+import type {ProductsProps} from "../../utils/Interfaces.ts";
 import './ProductList.css'
 import ProductCard from "./ProductCard.tsx";
 

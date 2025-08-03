@@ -1,5 +1,5 @@
 import {type ReactNode, useState} from "react";
-import type {UserProps} from "../utils/Interfaces.ts";
+import type {UserProps} from "../../utils/Interfaces.ts";
 import Logged from "./Logged.tsx";
 import Login from "./Login.tsx";
 

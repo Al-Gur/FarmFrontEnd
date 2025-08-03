@@ -1,5 +1,5 @@
 import {type ReactNode} from "react";
-import type {Product, ProductsProps} from "../utils/Interfaces.ts";
+import type {Product, ProductsProps} from "../../utils/Interfaces.ts";
 // import AllProductList from "./AllProductList.tsx";
 import ProductList from "./ProductList.tsx";
 

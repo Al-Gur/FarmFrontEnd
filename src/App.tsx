@@ -1,8 +1,8 @@
 import {useState} from 'react'
 import './App.css'
-import User from "./components/User.tsx";
+import User from "./components/User/User.tsx";
 import type {Product} from "./utils/Interfaces.ts";
-import Products from "./components/Products.tsx";
+import Products from "./components/Products/Products.tsx";
 
 
 function App() {

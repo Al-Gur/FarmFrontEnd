@@ -1,5 +1,5 @@
 import {type ReactNode} from "react";
-import type {ProductCardProps} from "../utils/Interfaces.ts";
+import type {ProductCardProps} from "../../utils/Interfaces.ts";
 import './ProductCard.css'
 
 function ProductCard({value, index, onCardClick}: ProductCardProps): ReactNode {

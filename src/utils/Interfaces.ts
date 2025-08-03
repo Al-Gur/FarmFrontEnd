@@ -40,6 +40,8 @@ export interface LoggedProps {
     setPassword: (password: string) => void,
     listProducts: Product[],
     setListProducts: (list: Product[]) => void
+    listProducts2: Product[],
+    setListProducts2: (list: Product[]) => void
 }
 
 export interface SetAuthProps {

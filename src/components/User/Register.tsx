@@ -1,5 +1,5 @@
 import {type ReactNode, useState} from "react";
-import type {RegisterProps, UserDto} from "../utils/Interfaces.ts"
+import type {RegisterProps, UserDto} from "../../utils/Interfaces.ts"
 
 function Register({setLogin, setPassword, setRegistration}: RegisterProps): ReactNode {
     const [newLogin, setNewLogin] = useState("");

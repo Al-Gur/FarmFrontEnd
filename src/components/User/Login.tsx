@@ -1,5 +1,5 @@
 import {type ReactNode, useState} from "react";
-import type {SetAuthProps, UserDto} from "../utils/Interfaces.ts"
+import type {SetAuthProps, UserDto} from "../../utils/Interfaces.ts"
 import Register from "./Register.tsx";
 
 function Login({setLogin, setPassword}: SetAuthProps): ReactNode {

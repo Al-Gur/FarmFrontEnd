@@ -1,5 +1,5 @@
 import {type ReactNode} from "react";
-import type {ProductsProps} from "../utils/Interfaces.ts";
+import type {ProductsProps} from "../../utils/Interfaces.ts";
 
 function AllProductList({listProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
 
