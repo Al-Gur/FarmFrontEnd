@@ -36,9 +36,15 @@ function Basket({listProducts, setListProducts, listProducts2, setListProducts2}
             <h3>
                 Total cost: {totalCost()}
             </h3>
-            <button className="mt-3" >
-                Order products!
-            </button>
+            <div>
+                {
+                    listProducts.length ?
+                        <button className="mt-3">
+                            Order products!
+                        </button>
+                        : ""
+                }
+            </div>
         </label>
 
     );
