@@ -11,13 +11,12 @@ export interface Product {
 export interface ProductsProps {
     listProducts: Product[],
     setListProducts: (list: Product[]) => void,
-    listProducts2: Product[],
-    setListProducts2: (list: Product[]) => void
+    listProducts2?: Product[],
+    setListProducts2?: (list: Product[]) => void
 }
 
 export interface ProductCardProps {
     value: Product,
-    index: number,
     onCardClick: () => void
 }
 

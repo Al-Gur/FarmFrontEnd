@@ -2,12 +2,9 @@ import {type ReactNode} from "react";
 import type {ProductCardProps} from "../../utils/Interfaces.ts";
 import './ProductCard.css'
 
-function ProductCard({value, index, onCardClick}: ProductCardProps): ReactNode {
+function ProductCard({value, onCardClick}: ProductCardProps): ReactNode {
     return (
         <div className="product" onClick={onCardClick}>
-            <div className="product-number">
-                {index + 1}
-            </div>
             <div className="product-image">
                 {
                     value.image ?

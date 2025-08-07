@@ -1,9 +1,18 @@
 .product {
-    width: 250px;
+    width: 100%;
+    max-width: 280px;
     height: 300px;
     padding: 5px;
-    border: solid black 2px;
-    margin: 10px;
+    border: solid gray 1px;
+    border-radius: 12px;
+    margin: 5px;
+}
+
+@media(max-width: 1150px) {
+    .product {
+        max-width: 240px;
+        border-radius: 8px;
+    }
 }
 
 .product-number {
@@ -17,7 +26,7 @@
 }
 
 .product-image {
- 
+
 }
 
 .product-category {

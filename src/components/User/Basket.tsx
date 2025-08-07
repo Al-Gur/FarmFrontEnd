@@ -29,10 +29,9 @@ function Basket({listProducts, setListProducts, listProducts2, setListProducts2}
     }
 
     return (
-        <label className="card p-2">
+        <label className="card p-2 mt-3">
             <h2>Basket</h2>
-            <ProductList listProducts={listProducts} setListProducts={setListProducts}
-                         listProducts2={listProducts2} setListProducts2={setListProducts2}/>
+            <ProductList listProducts={listProducts} setListProducts={setListProducts}/>
             <h3>
                 Total cost: {totalCost()}
             </h3>

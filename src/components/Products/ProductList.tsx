@@ -5,17 +5,32 @@ import ProductCard from "./ProductCard.tsx";
 
 function ProductList({listProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
 
+    const remaining = (product) => {
+        if (listProducts2) {
+            return {
+                ...product,
+                quantity: product.quantity - listProducts2
+                    .filter((product2) => product2.id == product.id)
+                    .reduce((sum, product2) => sum + product2.quantity, 0)
+            };
+        }
+        else {
+            return product;
+        }
+    }
+
     return (
         <section className="flex-container">
             {
                 listProducts.map((value, index) =>
-                    <ProductCard key= {index} value={value} index={index} onCardClick={() => {
-                        const takenQuantity = prompt("Enter quantity", "1");
-                        if (takenQuantity) {
-                            setListProducts2([...listProducts2, {...value, quantity: +takenQuantity}]);
-                            value.quantity -= +takenQuantity;
-                        }
-                    }}/>
+                    <ProductCard key={index} value={remaining(value)}
+                                 onCardClick={() => {
+                                     if (!listProducts2) return;
+                                     const takenQuantity = prompt("Enter quantity", "1");
+                                     if (takenQuantity) {
+                                         setListProducts2([...listProducts2, {...value, quantity: +takenQuantity}]);
+                                     }
+                                 }}/>
                 )
             }
         </section>
