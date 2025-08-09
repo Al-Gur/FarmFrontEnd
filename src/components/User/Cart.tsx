@@ -3,7 +3,7 @@ import type {Product, ProductsProps} from "../../utils/Interfaces.ts";
 import ProductList from "../Products/ProductList.tsx";
 
 
-function Basket({listProducts, setListProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
+function Cart({listProducts, setListProducts}: ProductsProps): ReactNode {
 
     const refreshProducts = async () => {
         const requestOptions = {
@@ -25,12 +25,13 @@ function Basket({listProducts, setListProducts, listProducts2, setListProducts2}
     }
 
     const totalCost = () => {
-        return listProducts.map(product => product.quantity * product.price).reduce((s, n) => s + n, 0);
+        return listProducts.map(product => product.quantity * product.price)
+            .reduce((s, n) => s + n, 0);
     }
 
     return (
         <label className="card p-2 mt-3">
-            <h2>Basket</h2>
+            <h2>Cart</h2>
             <ProductList listProducts={listProducts} setListProducts={setListProducts}/>
             <h3>
                 Total cost: {totalCost()}
@@ -49,5 +50,4 @@ function Basket({listProducts, setListProducts, listProducts2, setListProducts2}
     );
 }
 
-
-export default Basket
+export default Cart
