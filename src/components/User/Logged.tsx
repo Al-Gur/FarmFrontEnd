@@ -2,7 +2,7 @@ import type {ReactNode} from "react";
 import type {LoggedProps} from "../../utils/Interfaces.ts"
 import ProductList from "../Products/ProductList.tsx";
 import Cart from "./Cart.tsx";
-
+import './Logged.css'
 
 function Logged({login, setLogin, password, setPassword, listProducts, setListProducts,
                     listProducts2, setListProducts2}: LoggedProps): ReactNode {
@@ -12,7 +12,7 @@ function Logged({login, setLogin, password, setPassword, listProducts, setListPr
     }
 
     return (
-        <div className="container">
+        <div className="container pb-3 card userpanel">
             <h2>{login}</h2>
             <button onClick={logOut}>Log out</button>
             <Cart listProducts={listProducts} setListProducts={setListProducts}
