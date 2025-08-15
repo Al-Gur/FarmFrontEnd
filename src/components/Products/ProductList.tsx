@@ -8,6 +8,7 @@ function ProductList({listProducts, listProducts2, setListProducts2}: ProductsPr
     const remaining = (product: Product) => {
         if (listProducts2) {
             return {
+                takenQuantity: 0,
                 ...product,
                 quantity: product.quantity - listProducts2
                     .filter((product2) => product2.id == product.id)
@@ -15,7 +16,10 @@ function ProductList({listProducts, listProducts2, setListProducts2}: ProductsPr
             };
         }
         else {
-            return product;
+            return {
+                takenQuantity: 0,
+                ...product
+            };
         }
     }
 

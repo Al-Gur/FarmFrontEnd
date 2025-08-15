@@ -5,6 +5,7 @@ export interface Product {
     category: string,
     price: number,
     quantity: number,
+    takenQuantity?: number,
     producer: string
 }
 

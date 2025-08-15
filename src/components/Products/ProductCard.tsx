@@ -3,8 +3,12 @@ import type {ProductCardProps} from "../../utils/Interfaces.ts";
 import './ProductCard.css'
 
 function ProductCard({value, onCardClick}: ProductCardProps): ReactNode {
+    const cardName = "bigcard"+value.id;
     return (
-        <div className="product" onClick={onCardClick}>
+        <section className="product" onClick={()=> {
+            document.getElementById(cardName)!.style.display="block";
+            console.log(c)
+        }}>
             <div className="product-image">
                 {
                     value.image ?
@@ -15,11 +19,20 @@ function ProductCard({value, onCardClick}: ProductCardProps): ReactNode {
             <div className="product-name">
                 {value.name}
             </div>
-            <div className="product-quantity">
+            <div className="product-price">
                 Price: {value.price}
             </div>
             <div className="product-quantity">
                 Quantity: {value.quantity}
+            </div>
+            <div id={cardName} className="taken-quantity">
+                <label htmlFor={"taken"+cardName}>{value.id}:</label>
+                <input type="number" id={"taken"+cardName} name="taken"
+                       value={value.takenQuantity} min="0" max={value.quantity}
+                       onChange={(e) => value.takenQuantity = +e.target.value}/>
+                <button onClick={() => {
+                    document.getElementById(cardName)!.style.display="none";
+                }}>Close</button>
             </div>
             {
                 value.category ?
@@ -29,7 +42,7 @@ function ProductCard({value, onCardClick}: ProductCardProps): ReactNode {
             <div className="product-producer">
                 Producer: {value.producer}
             </div>
-        </div>
+        </section>
     );
 }
 

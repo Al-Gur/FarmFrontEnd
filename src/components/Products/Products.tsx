@@ -26,7 +26,7 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
     }
 
     return (
-        <label className="card col-7 me-5 p-2">
+        <label className="card col-7 me-5 p-2" onClick={()=>alert("Prod")}>
             <h2>All products</h2>
             <ProductList listProducts={listProducts} setListProducts={setListProducts}
             listProducts2={listProducts2} setListProducts2={setListProducts2}/>

@@ -33,8 +33,22 @@
     color: brown;
 }
 
+.product-price {
+    color: blueviolet;
+}
+
 .product-quantity {
     color: green;
+    margin-bottom: 5px;
+}
+
+.taken-quantity {
+    display: none;
+    left:25%;
+    top:25%;
+    width:50%;
+    height:50%;
+    color: red;
     margin-bottom: 5px;
 }
 
