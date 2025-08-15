@@ -6,8 +6,8 @@ function ProductCard({value, onCardClick}: ProductCardProps): ReactNode {
     const cardName = "bigcard"+value.id;
     return (
         <section className="product" onClick={()=> {
-            document.getElementById(cardName)!.style.display="block";
-            console.log(c)
+            //document.getElementById(cardName)!.style.display="block";
+            console.log(cardName)
         }}>
             <div className="product-image">
                 {
