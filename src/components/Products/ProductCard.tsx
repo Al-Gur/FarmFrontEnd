@@ -3,8 +3,12 @@ import type {ProductCardProps} from "../../utils/Interfaces.ts";
 import './ProductCard.css'
 
 function ProductCard({value, onCardClick}: ProductCardProps): ReactNode {
+    const cardID = "card"+value.id;
     return (
-        <div className="product" onClick={onCardClick}>
+        <div className="product" onClick={()=>{
+            alert(cardID);
+            document.getElementById(cardID)!.style.display="block";
+        }}>
             <div className="product-image">
                 {
                     value.image ?
@@ -28,6 +32,9 @@ function ProductCard({value, onCardClick}: ProductCardProps): ReactNode {
             }
             <div className="product-producer">
                 Producer: {value.producer}
+            </div>
+            <div className="taken" id={cardID}>
+                Taken:{cardID}
             </div>
         </div>
     );

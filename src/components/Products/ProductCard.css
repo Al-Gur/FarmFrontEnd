@@ -42,3 +42,11 @@
     color: blue;
 }
 
+.taken{
+    display: none;
+    position: fixed;
+    left: 25%;
+    top: 25%;
+    width: 50%;
+    height: 50%;
+}
