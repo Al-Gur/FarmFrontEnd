@@ -21,7 +21,7 @@ function ProductCard({value}: ProductCardProps): ReactNode {
                 <div className="product-name">
                     {value.name}
                 </div>
-                <div className="product-quantity">
+                <div className="product-price">
                     Price: {value.price}
                 </div>
                 <div className="product-quantity">
@@ -39,24 +39,44 @@ function ProductCard({value}: ProductCardProps): ReactNode {
 
             {
                 isBigCard ?
-                    <div className="product-shadow" id={cardBigID} onClick={(e) => {
+                    <div className="product-big-shadow" id={cardBigID} onClick={(e) => {
                         if (e.target == document.getElementById(cardBigID)) {
                             setIsBigCard(false);
                         }
                     }}>
                         <div className="product-big">
-                            <div>
+                            <span className="product-big-close-button" onClick={() => {
+                                setIsBigCard(false);
+                            }}>˟</span>
+                            <div className="product-big-image">
                                 {
                                     value.image ?
-                                        <img src={value.image} alt={value.name} className="w-75"/>
+                                        <img src={value.image} alt={value.name} className="w-100"/>
                                         : ""
                                 }
                             </div>
+                            <div className="product-big-name">
+                                {value.name}
+                            </div>
+                            <div className="product-big-price">
+                                Price: {value.price}
+                            </div>
+                            <div className="product-big-quantity">
+                                Quantity: {value.quantity}
+                            </div>
+                            {
+                                value.category ?
+                                    <div className="product-big-category">{"Category: " + value.category}</div>
+                                    : ""
+                            }
+                            <div className="product-big-producer">
+                                Producer: {value.producer}
+                            </div>
                             Taken:{cardBigID}
-                            <div className="close-big-product" onClick={() => {
+                            <div className="product-big-take" onClick={() => {
                                 setIsBigCard(false);
                             }}>
-                                Close
+                                Add to cart
                             </div>
                         </div>
                     </div>
