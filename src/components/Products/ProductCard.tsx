@@ -3,7 +3,6 @@ import type {ProductCardProps} from "../../utils/Interfaces.ts";
 import './ProductCard.css'
 
 function ProductCard({value}: ProductCardProps): ReactNode {
-    const cardSmallID = "cardSmall" + value.id;
     const cardBigID = "cardBig" + value.id;
     const [isBigCard, setIsBigCard] = useState(false);
 
