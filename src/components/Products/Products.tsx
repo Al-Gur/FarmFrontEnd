@@ -2,6 +2,7 @@ import {type ReactNode} from "react";
 import type {Product, ProductsProps} from "../../utils/Interfaces.ts";
 // import AllProductList from "./AllProductList.tsx";
 import ProductList from "./ProductList.tsx";
+import "./Products.css"
 
 
 function Products({listProducts, setListProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
@@ -30,9 +31,9 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
             <h2>All products</h2>
             <ProductList listProducts={listProducts} setListProducts={setListProducts}
             listProducts2={listProducts2} setListProducts2={setListProducts2}/>
-            <button className="mt-3" onClick={() => refreshProducts()}>
+            <div className="mt-3 mb-1 products-refresh" onClick={() => refreshProducts()}>
                 Refresh
-            </button>
+            </div>
         </label>
 
     );

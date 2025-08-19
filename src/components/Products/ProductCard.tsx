@@ -41,6 +41,7 @@ function ProductCard({value}: ProductCardProps): ReactNode {
                 isBigCard ?
                     <div className="product-big-shadow" id={cardBigID} onClick={(e) => {
                         if (e.target == document.getElementById(cardBigID)) {
+                            alert(";");
                             setIsBigCard(false);
                         }
                     }}>

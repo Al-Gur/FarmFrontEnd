@@ -47,8 +47,8 @@
 
 .product-big-shadow {
     position: fixed;
-    left: 0%;
-    top: 0%;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.5);
@@ -74,7 +74,6 @@
 .product-big-image {
     margin: 20px 40px 5px 20px;
     border: 1px solid gray;
-
 }
 
 .product-big-category {
