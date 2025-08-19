@@ -16,8 +16,7 @@ export interface ProductsProps {
 }
 
 export interface ProductCardProps {
-    value: Product,
-    onCardClick: () => void
+    value: Product
 }
 
 export interface ProductListProps {
