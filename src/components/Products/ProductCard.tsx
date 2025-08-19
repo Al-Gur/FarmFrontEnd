@@ -46,7 +46,7 @@ function ProductCard({value}: ProductCardProps): ReactNode {
                         }
                     }}>
                         <div className="product-big">
-                            <div className="product-big-image">
+                            <div>
                                 {
                                     value.image ?
                                         <img src={value.image} alt={value.name} className="w-75"/>
@@ -54,7 +54,7 @@ function ProductCard({value}: ProductCardProps): ReactNode {
                                 }
                             </div>
                             Taken:{cardBigID}
-                            <div className="clos" onClick={() => {
+                            <div className="close-big-product" onClick={() => {
                                 setIsBigCard(false);
                             }}>
                                 Close
