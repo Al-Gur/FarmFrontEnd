@@ -2,9 +2,11 @@ import {type ReactNode, useState} from "react";
 import type {ProductCardProps} from "../../utils/Interfaces.ts";
 import './ProductCard.css'
 
-function ProductCard({value}: ProductCardProps): ReactNode {
+function ProductCard({value, addToCart}: ProductCardProps): ReactNode {
     const cardBigID = "cardBig" + value.id;
+    const cardBigInpID = cardBigID + "Inp";
     const [isBigCard, setIsBigCard] = useState(false);
+    const [takenQuantity, setTakenQuantity] = useState(1);
 
     return (
         <>
@@ -74,7 +76,14 @@ function ProductCard({value}: ProductCardProps): ReactNode {
                                 Producer: {value.producer}
                             </div>
                             Taken:{cardBigID}
+                            <div>
+                                <label htmlFor={cardBigInpID}>Enter quantity:</label>
+                                <input type="number" id={cardBigInpID} name={cardBigInpID}
+                                       value={takenQuantity} min={1} max={value.quantity}
+                                       onChange={(e) => setTakenQuantity(e.target.value)}/>
+                            </div>
                             <div className="product-big-take" onClick={() => {
+                                addToCart(takenQuantity);
                                 setIsBigCard(false);
                             }}>
                                 Add to cart

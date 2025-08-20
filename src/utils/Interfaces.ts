@@ -16,7 +16,8 @@ export interface ProductsProps {
 }
 
 export interface ProductCardProps {
-    value: Product
+    value: Product,
+    addToCart: (n: number) => void
 }
 
 export interface ProductListProps {
