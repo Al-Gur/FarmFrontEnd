@@ -7,7 +7,6 @@ import Products from "./components/Products/Products.tsx";
 
 function App() {
     const [login, setLogin] = useState(``);
-    //const [listProducts, setListProducts] = useState<string>(``);
     const [allProducts, setAllProducts] = useState<Product[]>([]);
     const [takenProducts, setTakenProducts] = useState<Product[]>([]);
 
