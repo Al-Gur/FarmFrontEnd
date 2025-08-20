@@ -9,9 +9,7 @@ function ProductCard({value, addToCart}: ProductCardProps): ReactNode {
 
     return (
         <>
-            <div className="product" onClick={() => {
-                setIsBigCard(true);
-            }}>
+            <div className="product" onClick={() => setIsBigCard(true)}>
                 <div className="product-image">
                     {
                         value.image ?
@@ -40,7 +38,7 @@ function ProductCard({value, addToCart}: ProductCardProps): ReactNode {
 
             {
                 isBigCard ?
-                    <ProductBigCard value={value} addToCart={addToCart}/>
+                    <ProductBigCard value={value} addToCart={addToCart} closeBigCard={() => setIsBigCard(false)}/>
                     : ""
             }
         </>

@@ -13,7 +13,6 @@
     left: 25%;
     top: 10%;
     width: 50%;
-    height: 80%;
     background-color: white;
     border-radius: 10px;
 }
@@ -53,5 +52,14 @@
 
 
 .product-big-take {
-    background-color: red;
+    background-color: lime;
+    position: relative;
+    left: 35%;
+    width: 30%;
+    height: 40px;
+    border: 1px gray solid;
+    border-radius: 5px;
+    font-size: 1.5em;
+    margin: 10px;
+    cursor: pointer;
 }

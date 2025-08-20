@@ -2,7 +2,7 @@ import {type ReactNode, useState} from "react";
 import './ProductBigCard.css'
 import type {ProductCardProps} from "../../utils/Interfaces.ts";
 
-function ProductBigCard({value, addToCart}: ProductCardProps): ReactNode {
+function ProductBigCard({value, addToCart, closeBigCard}: ProductCardProps): ReactNode {
     const cardBigID = "cardBig" + value.id;
     const cardBigInpID = cardBigID + "Inp";
     const [takenQuantity, setTakenQuantity] = useState(1);
@@ -11,14 +11,11 @@ function ProductBigCard({value, addToCart}: ProductCardProps): ReactNode {
 
         <div className="product-big-shadow" id={cardBigID} onClick={(e) => {
             if (e.target == document.getElementById(cardBigID)) {
-                alert(";");
-                setIsBigCard(false);
+                closeBigCard();
             }
         }}>
             <div className="product-big">
-                            <span className="product-big-close-button" onClick={() => {
-                                setIsBigCard(false);
-                            }}>˟</span>
+                            <span className="product-big-close-button" onClick={closeBigCard}>˟</span>
                 <div className="product-big-image">
                     {
                         value.image ?
@@ -52,7 +49,7 @@ function ProductBigCard({value, addToCart}: ProductCardProps): ReactNode {
                 </div>
                 <div className="product-big-take" onClick={() => {
                     addToCart(takenQuantity);
-                    setIsBigCard(false);
+                    closeBigCard();
                 }}>
                     Add to cart
                 </div>
