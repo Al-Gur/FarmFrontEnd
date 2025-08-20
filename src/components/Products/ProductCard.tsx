@@ -26,11 +26,6 @@ function ProductCard({value, addToCart}: ProductCardProps): ReactNode {
                 <div className="product-quantity">
                     Quantity: {value.quantity}
                 </div>
-                {
-                    value.category ?
-                        <div className="product-category">{"Category: " + value.category}</div>
-                        : ""
-                }
                 <div className="product-producer">
                     Producer: {value.producer}
                 </div>
