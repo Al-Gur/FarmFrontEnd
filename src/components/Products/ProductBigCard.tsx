@@ -15,7 +15,7 @@ function ProductBigCard({value, addToCart, closeBigCard}: ProductCardProps): Rea
             }
         }}>
             <div className="product-big">
-                            <span className="product-big-close-button" onClick={closeBigCard}>˟</span>
+                <span className="product-big-close-button" onClick={closeBigCard}>˟</span>
                 <div className="product-big-image">
                     {
                         value.image ?
