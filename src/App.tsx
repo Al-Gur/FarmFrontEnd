@@ -23,7 +23,7 @@ function App() {
             {/*  </a>*/}
             {/*</div>*/}
             <h1>Farm</h1>
-            <Navigation/>
+            <Navigation menuItem={menuItem} setMenuItem={setMenuItem}/>
             <div className="container-fluid ">
                 <div className="row">
                     <Products listProducts={allProducts} setListProducts={setAllProducts}

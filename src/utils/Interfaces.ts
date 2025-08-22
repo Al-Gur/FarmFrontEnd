@@ -64,3 +64,13 @@ export interface UserDto {
     fullNames: string,
     roles: string[]
 }
+
+
+
+export interface MenuProps {
+    menuItem: number,
+    setMenuItem: (number) => void
+}
+
+export const menuItems = ["Home", "About us"]
+export const menuNames = ["HOME", "ABOUT"]
