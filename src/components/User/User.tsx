@@ -2,6 +2,7 @@ import {type ReactNode, useState} from "react";
 import type {UserProps} from "../../utils/Interfaces.ts";
 import Logged from "./Logged.tsx";
 import Login from "./Login.tsx";
+import './User.css'
 
 
 function User({login, setLogin, listProducts, setListProducts, listProducts2, setListProducts2}: UserProps): ReactNode {

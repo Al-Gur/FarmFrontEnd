@@ -3,13 +3,14 @@ import './App.css'
 import User from "./components/User/User.tsx";
 import type {Product} from "./utils/Interfaces.ts";
 import Products from "./components/Products/Products.tsx";
+import Navigation from "./components/Menus/Navigation.tsx"
 
 
 function App() {
     const [login, setLogin] = useState(``);
     const [allProducts, setAllProducts] = useState<Product[]>([]);
     const [takenProducts, setTakenProducts] = useState<Product[]>([]);
-
+    const [menuItem, setMenuItem] = useState(0);
 
     return (
         <>
@@ -22,11 +23,11 @@ function App() {
             {/*  </a>*/}
             {/*</div>*/}
             <h1>Farm</h1>
-
+            <Navigation/>
             <div className="container-fluid ">
                 <div className="row">
                     <Products listProducts={allProducts} setListProducts={setAllProducts}
-                    listProducts2={takenProducts} setListProducts2={setTakenProducts}/>
+                              listProducts2={takenProducts} setListProducts2={setTakenProducts}/>
                     <User login={login} setLogin={setLogin}
                           listProducts={takenProducts} setListProducts={setTakenProducts}
                           listProducts2={takenProducts} setListProducts2={setTakenProducts}
