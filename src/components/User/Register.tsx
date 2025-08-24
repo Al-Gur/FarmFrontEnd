@@ -6,6 +6,8 @@ function Register({setLogin, setPassword, setRegistration}: RegisterProps): Reac
     const [newPassword, setNewPassword] = useState("");
     const [newPasswordCopy, setNewPasswordCopy] = useState("");
     const [newFullName, setNewFullName] = useState("");
+    const [newEMail, setNewEMail] = useState("");
+    const [newPhone, setNewPhone] = useState("");
 
     const tryRegister = async () => {
         /*        const myHeaders = new Headers();
@@ -48,6 +50,16 @@ function Register({setLogin, setPassword, setRegistration}: RegisterProps): Reac
                 <label htmlFor="fullName" className="col-6 text-end">Full name:</label>
                 <input type="text" id="fullName" name="fullName" value={newFullName} className="col-6"
                        onChange={(e) => setNewFullName(e.target.value)}/>
+            </div>
+            <div className="row mb-3">
+                <label htmlFor="eMail" className="col-6 text-end">E-mail:</label>
+                <input type="text" id="eMail" name="eMail" value={newEMail} className="col-6"
+                       onChange={(e) => setNewEMail(e.target.value)}/>
+            </div>
+            <div className="row mb-3">
+                <label htmlFor="phone" className="col-6 text-end">Phone:</label>
+                <input type="text" id="phone" name="phone" value={newPhone} className="col-6"
+                       onChange={(e) => setNewPhone(e.target.value)}/>
             </div>
             <div className="row m-4">
                 <label htmlFor="buyer" className="col-3 text-end">Buyer</label>
