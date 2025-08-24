@@ -15,17 +15,20 @@ export interface ProductsProps {
     setListProducts2?: (list: Product[]) => void
 }
 
+export interface ProductListProps {
+    listProducts: Product[],
+    listProducts2?: Product[],
+    setListProducts2?: (list: Product[]) => void,
+    selectedCategory: string,
+    maxPrice: number,
+    sortBy: string
+}
+
 export interface ProductCardProps {
     value: Product,
     addToCart: (n: number) => void,
     closeBigCard: () => void;
 }
-
-export interface ProductListProps {
-    listProducts: Product[],
-    listProducts2: Product[]
-}
-
 
 export interface UserProps {
     login: string,
@@ -69,7 +72,7 @@ export interface UserDto {
 
 export interface MenuProps {
     menuItem: number,
-    setMenuItem: (number) => void
+    setMenuItem: (item: number) => void
 }
 
 export const menuItems = ["Home", "About us"]

@@ -33,7 +33,8 @@ function ProductCard({value, addToCart}: ProductCardProps): ReactNode {
 
             {
                 isBigCard ?
-                    <ProductBigCard value={value} addToCart={addToCart} closeBigCard={() => setIsBigCard(false)}/>
+                    <ProductBigCard value={value} addToCart={addToCart}
+                                    closeBigCard={() => setIsBigCard(false)}/>
                     : ""
             }
         </>

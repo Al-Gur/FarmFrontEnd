@@ -6,9 +6,8 @@ import "./Products.css"
 
 function Products({listProducts, setListProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
 
-    const ALL = "All";
-    const [selectedCategory, setSelectedCategory] = useState(ALL);
-    const [categoryList, setCategoryList] = useState([ALL]);
+    const [selectedCategory, setSelectedCategory] = useState("");
+    const [categoryList, setCategoryList] = useState([""]);
     const [maxPrice, setMaxPrice] = useState(0);
     const [sortBy, setSortBy] = useState("");
 
@@ -37,12 +36,12 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
 
     return (
         <div className="card col-7 me-5 p-2">
-            <div>
+            <section className="Filters">
                 <h3>Products</h3>
                 <label className="me-2">Category:</label>
                 <select value={selectedCategory}
                         onChange={(e) => setSelectedCategory(e.target.value)}>
-                    <option value={"All"}>All</option>
+                    <option value={""}></option>
                     <option value={"Fishes"}>Fishes</option>
                     <option value={"Fruits"}>Friuts</option>
                     <option value={"Vegetables"}>Vegetables</option>
@@ -52,7 +51,7 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
                 <input type="text" id="MaxPrice" name="MaxPrice" className="max-price"
                        value={maxPrice || ''}
                        onChange={(e) =>
-                           setMaxPrice(e.target.value? +e.target.value : 0)}
+                           setMaxPrice(e.target.value ? +e.target.value : 0)}
                 />
 
                 <label className="mx-2">Sort by:</label>
@@ -63,9 +62,10 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
                     <option value="Price">Price</option>
                     <option value="Category">Category</option>
                 </select>
-            </div>
-            <ProductList listProducts={listProducts} setListProducts={setListProducts}
-                         listProducts2={listProducts2} setListProducts2={setListProducts2}/>
+            </section>
+
+            <ProductList listProducts={listProducts} listProducts2={listProducts2} setListProducts2={setListProducts2}
+                         selectedCategory={selectedCategory} maxPrice={maxPrice ? maxPrice : 0} sortBy={sortBy}/>
             <div className="mt-3 mb-1 products-refresh" onClick={() => refreshProducts()}>
                 Refresh
             </div>
