@@ -72,8 +72,9 @@ export interface UserDto {
 
 export interface MenuProps {
     menuItem: number,
-    setMenuItem: (item: number) => void
+    setMenuItem: (item: number) => void,
+    login: string
 }
 
-export const menuItems = ["Home", "About us"]
-export const menuNames = ["HOME", "ABOUT"]
+export const menuItems = ["Home", "About us", "My account"]
+export const menuNames = ["HOME", "ABOUT", "ACCOUNT"]

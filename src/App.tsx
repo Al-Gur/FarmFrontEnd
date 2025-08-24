@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import './App.css'
 import User from "./components/User/User.tsx";
-import type {Product} from "./utils/Interfaces.ts";
+import {menuNames, type Product} from "./utils/Interfaces.ts";
 import Products from "./components/Products/Products.tsx";
 import Navigation from "./components/Menus/Navigation.tsx"
 
@@ -23,17 +23,21 @@ function App() {
             {/*  </a>*/}
             {/*</div>*/}
             <h1>Generous farm</h1>
-            <Navigation menuItem={menuItem} setMenuItem={setMenuItem}/>
-            <div className="container-fluid ">
-                <div className="row">
-                    <Products listProducts={allProducts} setListProducts={setAllProducts}
-                              listProducts2={takenProducts} setListProducts2={setTakenProducts}/>
-                    <User login={login} setLogin={setLogin}
-                          listProducts={takenProducts} setListProducts={setTakenProducts}
-                          listProducts2={takenProducts} setListProducts2={setTakenProducts}
-                    />
-                </div>
-            </div>
+            <Navigation menuItem={menuItem} setMenuItem={setMenuItem} login={login}/>
+            {
+                menuNames[menuItem] == "ABOUT" ?
+                    "" :
+                    <div className="container-fluid ">
+                        <div className="row">
+                            <Products listProducts={allProducts} setListProducts={setAllProducts}
+                                      listProducts2={takenProducts} setListProducts2={setTakenProducts}/>
+                            <User login={login} setLogin={setLogin}
+                                  listProducts={takenProducts} setListProducts={setTakenProducts}
+                                  listProducts2={takenProducts} setListProducts2={setTakenProducts}
+                            />
+                        </div>
+                    </div>
+            }
         </>
     )
 }

@@ -4,8 +4,8 @@
     margin: 0 auto;
     padding: 2rem;
     text-align: center;
-    /*background-color: #535bf2;*/
-    background-image: url("/src/assets/Field.jpg");
+    background-color: #e8ffd0;
+    /*background-image: url("/src/assets/Field.jpg");*/
 }
 
 h1 {
