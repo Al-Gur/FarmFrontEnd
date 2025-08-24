@@ -19,7 +19,7 @@ function ProductBigCard({value, addToCart, closeBigCard}: ProductCardProps): Rea
                 <div className="product-big-image-box">
                     {
                         value.image ?
-                            <img src={value.image} alt={value.name} className="w-100 product-big-image"/>
+                            <img src={value.image} alt={value.name} className="product-big-image"/>
                             : ""
                     }
                 </div>
