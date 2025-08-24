@@ -11,10 +11,12 @@ function About({setMenuItem}: MenuProps): ReactNode {
         }}>
             <div className="about">
                 <span className="about-close-button" onClick={() => setMenuItem(0)}>˟</span>
-                Farm<br/>
-                Farm<br/>
-                Farm<br/>
-                Farm<br/>
+                <h2>Selling surplus farm produce</h2>
+                <p>Many successful farmers often produce more agricultural products than they planned at the
+                    beginning of the season. Wholesale buyers sometimes do not agree to accept such surpluses,
+                    and they accumulate at the producers. Meanwhile, these products are needed by people!</p>
+                <p>The purpose of this site is to help producers and buyers of agricultural products find each
+                    other.</p>
             </div>
         </div>
     )

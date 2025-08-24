@@ -7,6 +7,7 @@
     background-color: white;
     border: 3px solid green;
     border-radius: 30px;
+    padding: 10px;
 }
 
 .about-shadow {
@@ -19,6 +20,14 @@
     z-index: 1000;
 }
 
+h2 {
+    color: limegreen;
+    margin-bottom: 10px;
+}
+
+p {
+    text-align: left;
+}
 
 .about-close-button {
     position: absolute;
