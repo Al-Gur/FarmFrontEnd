@@ -1,4 +1,4 @@
-import {useState, type ReactNode} from "react";
+import {type ReactNode, useState} from "react";
 import type {Product, ProductsProps} from "../../utils/Interfaces.ts";
 // import AllProductList from "./AllProductList.tsx";
 import ProductList from "./ProductList.tsx";
@@ -9,6 +9,8 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
     const ALL = "All";
     const [selectedCategory, setSelectedCategory] = useState(ALL);
     const [categoryList, setCategoryList] = useState([ALL]);
+    const [maxPrice, setMaxPrice] = useState(0);
+    const [sortBy, setSortBy] = useState("");
 
     const refreshProducts = async () => {
         const requestOptions = {
@@ -29,18 +31,37 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
             .catch((error) => console.error(error));
     }
 
-    const refreshCategoryList = () => {
-        setCategoryList(listProducts.map(value => value.category).sort((a,b) => a>b))
-    }
+    // const refreshCategoryList = () => {
+    //     setCategoryList(listProducts.map(value => value.category).sort((a,b) => a>b))
+    // }
 
     return (
         <div className="card col-7 me-5 p-2">
             <div>
-                <span>Products</span>
-                <label>Category:</label>
-                <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+                <h3>Products</h3>
+                <label className="me-2">Category:</label>
+                <select value={selectedCategory}
+                        onChange={(e) => setSelectedCategory(e.target.value)}>
                     <option value={"All"}>All</option>
-                    <option value={"F"}>F</option>
+                    <option value={"Fishes"}>Fishes</option>
+                    <option value={"Fruits"}>Friuts</option>
+                    <option value={"Vegetables"}>Vegetables</option>
+                </select>
+
+                <label htmlFor="MaxPrice" className="m-2">Max price:</label>
+                <input type="text" id="MaxPrice" name="MaxPrice" className="max-price"
+                       value={maxPrice || ''}
+                       onChange={(e) =>
+                           setMaxPrice(e.target.value? +e.target.value : 0)}
+                />
+
+                <label className="mx-2">Sort by:</label>
+                <select value={sortBy}
+                        onChange={(e) => setSortBy(e.target.value)}>
+                    <option value=""></option>
+                    <option value="Name">Name</option>
+                    <option value="Price">Price</option>
+                    <option value="Category">Category</option>
                 </select>
             </div>
             <ProductList listProducts={listProducts} setListProducts={setListProducts}

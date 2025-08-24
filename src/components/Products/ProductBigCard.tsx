@@ -47,7 +47,7 @@ function ProductBigCard({value, addToCart, closeBigCard}: ProductCardProps): Rea
                     <label htmlFor={cardBigInpID} className="m-2">Enter quantity:</label>
                     <input type="number" id={cardBigInpID} name={cardBigInpID}
                            value={takenQuantity} min={1} max={value.quantity}
-                           onChange={(e) => setTakenQuantity(e.target.value)}/>
+                           onChange={(e) => setTakenQuantity(+e.target.value)}/>
                 </div>
                 <div className="product-big-take" onClick={() => {
                     addToCart(takenQuantity);
