@@ -22,7 +22,7 @@ function App() {
             {/*    <img src={reactLogo} className="logo react" alt="React logo" />*/}
             {/*  </a>*/}
             {/*</div>*/}
-            <h1>Farm</h1>
+            <h1>Generous farm</h1>
             <Navigation menuItem={menuItem} setMenuItem={setMenuItem}/>
             <div className="container-fluid ">
                 <div className="row">
