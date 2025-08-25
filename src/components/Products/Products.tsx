@@ -35,7 +35,7 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
     // }
 
     return (
-        <div className="card col-7 me-5 p-2">
+        <div className="card col-7 col-xl-8 me-5 p-2">
             <section className="Filters">
                 <h3>Products</h3>
                 <label className="me-2">Category:</label>

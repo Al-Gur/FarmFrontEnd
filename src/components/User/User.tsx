@@ -9,7 +9,7 @@ function User({login, setLogin, listProducts, setListProducts, listProducts2, se
     const [password, setPassword] = useState(``);
 
     return (
-        <div className="col-4">
+        <div className="col-4 col-xl-3">
             {
                 login ?
                     <Logged login={login} setLogin={setLogin} password={password} setPassword={setPassword}

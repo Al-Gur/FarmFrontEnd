@@ -8,6 +8,7 @@ function Register({setLogin, setPassword, setRegistration}: RegisterProps): Reac
     const [newFullName, setNewFullName] = useState("");
     const [newEMail, setNewEMail] = useState("");
     const [newPhone, setNewPhone] = useState("");
+    const [newAddress, setNewAddress] = useState("");
 
     const tryRegister = async () => {
         /*        const myHeaders = new Headers();
@@ -29,47 +30,53 @@ function Register({setLogin, setPassword, setRegistration}: RegisterProps): Reac
     }
 
     return (
-        <div className="container card bg-info-subtle p-4">
+        <div className="container card bg-info-subtle pe-4 ps-1">
             <div className="row mb-3">
                 <label htmlFor="loginInput" className="col-6 text-end">Login:</label>
-                <input type="text" id="loginInput" name="loginInput" value={newLogin} className="col-6"
+                <input type="text" id="loginInput" name="loginInput" value={newLogin} className="col-6" required
                        onChange={(e) => setNewLogin(e.target.value)}/>
             </div>
             <div className="row mb-3">
                 <label htmlFor="password" className="col-6 text-end">Password:</label>
-                <input type="password" id="password" name="password" value={newPassword} className="col-6"
+                <input type="password" id="password" name="password" value={newPassword} className="col-6" required
                        onChange={(e) => setNewPassword(e.target.value)}/>
             </div>
-            <div className="row mb-3">
-                <label htmlFor="passwordCopy" className="col-6 text-end">Confirm password:</label>
-                <input type="password" id="passwordCopy" name="passwordCopy" value={newPasswordCopy}
+            <div className="row mb-5">
+                <label htmlFor="passwordCopy" className="col-6 text-end mb-0 pb-0">Confirm password:</label>
+                <input type="password" id="passwordCopy" name="passwordCopy" value={newPasswordCopy} required
                        className="col-6"
                        onChange={(e) => setNewPasswordCopy(e.target.value)}/>
             </div>
             <div className="row mb-3">
-                <label htmlFor="fullName" className="col-6 text-end">Full name:</label>
-                <input type="text" id="fullName" name="fullName" value={newFullName} className="col-6"
+                <label htmlFor="fullName" className="col-4 text-end">Full name:</label>
+                <input type="text" id="fullName" name="fullName" value={newFullName} className="col-8" required
                        onChange={(e) => setNewFullName(e.target.value)}/>
             </div>
             <div className="row mb-3">
-                <label htmlFor="eMail" className="col-6 text-end">E-mail:</label>
-                <input type="text" id="eMail" name="eMail" value={newEMail} className="col-6"
+                <label htmlFor="eMail" className="col-4 text-end">E-mail:</label>
+                <input type="email" id="eMail" name="eMail" value={newEMail} className="col-8" required
                        onChange={(e) => setNewEMail(e.target.value)}/>
             </div>
             <div className="row mb-3">
-                <label htmlFor="phone" className="col-6 text-end">Phone:</label>
-                <input type="text" id="phone" name="phone" value={newPhone} className="col-6"
+                <label htmlFor="phone" className="col-4 text-end">Phone:</label>
+                <input type="tel" id="phone" name="phone" value={newPhone} className="col-8" required
                        onChange={(e) => setNewPhone(e.target.value)}/>
             </div>
+            <div className="row mb-3">
+                <label htmlFor="aDreS" className="col-4 text-end">Address:</label>
+                <textarea id="aDreS" name="aDreS" value={newAddress} className="col-8" rows={2} cols={20} required
+                          onChange={(e) => setNewAddress(e.target.value)}>
+                </textarea>
+            </div>
             <div className="row m-4">
-                <label htmlFor="buyer" className="col-3 text-end">Buyer</label>
+                <label htmlFor="buyer" className="col-4 text-end">Buyer</label>
                 <input type="radio" id="buyer" name="role" value="Buyer" className="col-2"/>
                 <label htmlFor="seller" className="col-4 text-end">Seller</label>
                 <input type="radio" id="seller" name="role" value="Seller" className="col-2"/>
             </div>
             <div className="row">
-                <button className="col-6 me-3" onClick={() => tryRegister()}>Register</button>
-                <button className="col-5" onClick={() => setRegistration(false)}>Cancel</button>
+                <button className="col-5 me-4 ms-4" onClick={() => tryRegister()}>Register</button>
+                <button className="col-5 me-1 ms-0" onClick={() => setRegistration(false)}>Cancel</button>
             </div>
         </div>
     )
