@@ -3,6 +3,7 @@ import type {Product, ProductsProps} from "../../utils/Interfaces.ts";
 // import AllProductList from "./AllProductList.tsx";
 import ProductList from "./ProductList.tsx";
 import "./Products.css"
+import {SERVER_URL} from "../../utils/Urls.ts";
 
 function Products({listProducts, setListProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
 
@@ -12,22 +13,26 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
     const [sortBy, setSortBy] = useState("");
 
     const refreshProducts = async () => {
-        const requestOptions = {
-            method: "GET"//,
-            // redirect: "follow"
-        };
+        if (selectedCategory || maxPrice || sortBy) {
+            const requestOptions: RequestInit = {
+                method: "GET",
+                body: JSON.stringify({selectedCategory, maxPrice, sortBy})
+            };
 
-        fetch("http://localhost:8080/products/showall", requestOptions)
-            .then((response) => {
-                //console.log(response.text());
-                return response.json();
-            })
-            .then(result => {
-                console.log(result);
-                return result;
-            })
-            .then((result: Product[]) => setListProducts(result))
-            .catch((error) => console.error(error));
+            fetch(SERVER_URL + "products/show", requestOptions)
+                .then((response) => response.json())
+                .then(result => {
+                    console.log(result);
+                    return result;
+                })
+                .then((result: Product[]) => setListProducts(result))
+                .catch((error) => console.error(error));
+        } else {
+            fetch(SERVER_URL + "products/showall")
+                .then((response) => response.json())
+                .then((result: Product[]) => setListProducts(result))
+                .catch((error) => console.error(error));
+        }
     }
 
     // const refreshCategoryList = () => {
