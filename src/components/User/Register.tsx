@@ -1,5 +1,7 @@
 import {type ReactNode, useState} from "react";
 import type {RegisterProps} from "../../utils/Interfaces.ts"
+import '../Common/FarmStyles.css'
+import './Register.css'
 
 function Register({setLogin, setPassword, setRegistration}: RegisterProps): ReactNode {
     const [newLogin, setNewLogin] = useState("");
@@ -30,7 +32,9 @@ function Register({setLogin, setPassword, setRegistration}: RegisterProps): Reac
     }
 
     return (
-        <div className="container card bg-info-subtle pe-4 ps-1">
+        <section className="big-shadow">
+        <div className="container card bg-info-subtle pe-4 ps-1 pt-2 register-window">
+            <h3 className="align-self-center text-black mt-2 mb-4">New user</h3>
             <div className="row mb-3">
                 <label htmlFor="loginInput" className="col-6 text-end">Login:</label>
                 <input type="text" id="loginInput" name="loginInput" value={newLogin} className="col-6" required
@@ -75,10 +79,11 @@ function Register({setLogin, setPassword, setRegistration}: RegisterProps): Reac
                 <input type="radio" id="seller" name="role" value="Seller" className="col-2"/>
             </div>
             <div className="row">
-                <button className="col-5 me-4 ms-4" onClick={() => tryRegister()}>Register</button>
-                <button className="col-5 me-1 ms-0" onClick={() => setRegistration(false)}>Cancel</button>
+                <button className="col-5 me-2 ms-4" onClick={() => tryRegister()}>Register</button>
+                <button className="col-5 me-1 ms-3" onClick={() => setRegistration(false)}>Cancel</button>
             </div>
         </div>
+        </section>
     )
 }
 

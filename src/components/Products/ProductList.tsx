@@ -23,20 +23,20 @@ function ProductList({listProducts, listProducts2, setListProducts2,
         <section className="flex-container">
             {
                 listProducts
-                    .filter((product) => !selectedCategory || product.category == selectedCategory)
-                    .filter((product) => !maxPrice || product.price <= maxPrice)
-                    .sort((p1, p2) => {
-                        switch (sortBy) {
-                            case "Name":
-                                return p1.name.localeCompare(p2.name);
-                            case "Price":
-                                return p1.price - p2.price;
-                            case "Category":
-                                return p1.category.localeCompare(p2.category);
-                            default:
-                                return 1;
-                        }
-                    })
+                    // .filter((product) => !selectedCategory || product.category == selectedCategory)
+                    // .filter((product) => !maxPrice || product.price <= maxPrice)
+                    // .sort((p1, p2) => {
+                    //     switch (sortBy) {
+                    //         case "Name":
+                    //             return p1.name.localeCompare(p2.name);
+                    //         case "Price":
+                    //             return p1.price - p2.price;
+                    //         case "Category":
+                    //             return p1.category.localeCompare(p2.category);
+                    //         default:
+                    //             return 1;
+                    //     }
+                    // })
                     .map((value, index) =>
                     <ProductCard key={index} value={remaining(value)} addToCart={(takenQuantity) => {
                         if (!(listProducts2 && setListProducts2)) return;

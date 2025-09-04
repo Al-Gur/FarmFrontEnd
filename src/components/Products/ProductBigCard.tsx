@@ -1,5 +1,6 @@
 import {type ReactNode, useState} from "react";
 import './ProductBigCard.css'
+import '../Common/FarmStyles.css'
 import type {ProductCardProps} from "../../utils/Interfaces.ts";
 
 function ProductBigCard({value, addToCart, closeBigCard}: ProductCardProps): ReactNode {
@@ -9,7 +10,7 @@ function ProductBigCard({value, addToCart, closeBigCard}: ProductCardProps): Rea
 
     return (
 
-        <div className="product-big-shadow" id={cardBigID} onClick={(e) => {
+        <div className="big-shadow" id={cardBigID} onClick={(e) => {
             if (e.target == document.getElementById(cardBigID)) {
                 closeBigCard();
             }

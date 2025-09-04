@@ -1,6 +1,7 @@
 import {type ReactNode, useState} from "react";
 import type {SetAuthProps, UserDto} from "../../utils/Interfaces.ts"
 import Register from "./Register.tsx";
+import {createPortal} from "react-dom";
 
 function Login({setLogin, setPassword}: SetAuthProps): ReactNode {
     const [registration, setRegistration] = useState(false);
@@ -28,7 +29,9 @@ function Login({setLogin, setPassword}: SetAuthProps): ReactNode {
 
     return (
         registration ?
+            createPortal(
             <Register setLogin={setLogin} setPassword={setPassword} setRegistration={setRegistration}/>
+                , document.body)
             :
             <div className="container card bg-success-subtle">
                 <div className="row mb-3">

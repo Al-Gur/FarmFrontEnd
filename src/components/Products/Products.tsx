@@ -14,12 +14,13 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
 
     const refreshProducts = async () => {
         if (selectedCategory || maxPrice || sortBy) {
-            const requestOptions: RequestInit = {
-                method: "GET",
-                body: JSON.stringify({selectedCategory, maxPrice, sortBy})
-            };
+            // const requestOptions: RequestInit = {
+            //     method: "GET",
+            //     body: JSON.stringify({selectedCategory, maxPrice, sortBy})
+            // };
 
-            fetch(SERVER_URL + "products/show", requestOptions)
+            const query = `category=${selectedCategory}&maxprice=${maxPrice}&sort=${sortBy}`;
+            fetch(SERVER_URL + "products/show/" + query)
                 .then((response) => response.json())
                 .then(result => {
                     console.log(result);
@@ -64,8 +65,9 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
                         onChange={(e) => setSortBy(e.target.value)}>
                     <option value=""></option>
                     <option value="Name">Name</option>
-                    <option value="Price">Price</option>
                     <option value="Category">Category</option>
+                    <option value="Price">Price</option>
+                    <option value="Producer">Producer</option>
                 </select>
             </section>
 
