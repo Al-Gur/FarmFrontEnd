@@ -32,6 +32,8 @@ function App() {
                     <div className="container-fluid ">
                         {
                             isSeller ?
+                                <OwnProduce/>
+                                :
                                 <div className="row">
                                     <Products listProducts={allProducts} setListProducts={setAllProducts}
                                               listProducts2={takenProducts} setListProducts2={setTakenProducts}/>
@@ -40,7 +42,6 @@ function App() {
                                           listProducts2={takenProducts} setListProducts2={setTakenProducts}
                                     />
                                 </div>
-                                : <OwnProduce/>
                         }
                     </div>
             }

@@ -9,8 +9,8 @@ import login from "../User/Login.tsx";
 function Products({listProducts, setListProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
 
     const [selectedCategory, setSelectedCategory] = useState("");
-    const noCategories: Category = {category: "", count: 0};
-    const [categoryList, setCategoryList] = useState([noCategories]);
+    const noCategories: Category[] = [];
+    const [categoryList, setCategoryList] = useState(noCategories);
     const [maxPrice, setMaxPrice] = useState(0);
     const [sortBy, setSortBy] = useState("");
 
@@ -71,13 +71,9 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
                         }}>
                     {
                         categoryList.map(c =>
-                            <option value={c.category}>{c.category + " (" + c.count + ")"}</option>
+                            <option value={c.category} key={c.category}>{c.category + " (" + c.count + ")"}</option>
                         )
                     }
-                    <option value={""}></option>
-                    <option value={"Fishes"}>Fishes</option>
-                    <option value={"Fruits"}>Friuts</option>
-                    <option value={"Vegetables"}>Vegetables</option>
                 </select>
 
                 <label htmlFor="MaxPrice" className="m-2">Max price:</label>
