@@ -8,6 +8,17 @@ export interface Product {
     producer: string
 }
 
+export interface Category {
+    category: string,
+    count: number
+}
+
+export interface ProductListDto {
+    products: Product[],
+    categories: Category[]
+}
+
+
 export interface ProductsProps {
     listProducts: Product[],
     setListProducts: (list: Product[]) => void,
@@ -67,7 +78,6 @@ export interface UserDto {
     fullNames: string,
     roles: string[]
 }
-
 
 
 export interface MenuProps {

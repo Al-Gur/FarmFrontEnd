@@ -1,5 +1,5 @@
 import {type ReactNode, useState} from "react";
-import type {Product, ProductsProps} from "../../utils/Interfaces.ts";
+import type {Category, Product, ProductListDto, ProductsProps} from "../../utils/Interfaces.ts";
 // import AllProductList from "./AllProductList.tsx";
 import ProductList from "./ProductList.tsx";
 import "./Products.css"
@@ -9,7 +9,8 @@ import login from "../User/Login.tsx";
 function Products({listProducts, setListProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
 
     const [selectedCategory, setSelectedCategory] = useState("");
-    const [categoryList, setCategoryList] = useState([""]);
+    const noCategories: Category = {category: "", count: 0};
+    const [categoryList, setCategoryList] = useState([noCategories]);
     const [maxPrice, setMaxPrice] = useState(0);
     const [sortBy, setSortBy] = useState("");
 
@@ -31,12 +32,19 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
                     console.log(result);
                     return result;
                 })
-                .then((result: Product[]) => setListProducts(result))
+                .then((result: ProductListDto) => {
+                    setListProducts(result.products);
+                    setCategoryList(result.categories);
+                })
                 .catch((error) => console.error(error));
-        } else {
+        }
+        else {
             fetch(SERVER_URL + "products/showall")
                 .then((response) => response.json())
-                .then((result: Product[]) => setListProducts(result))
+                .then((result: ProductListDto) => {
+                    setListProducts(result.products);
+                    setCategoryList(result.categories);
+                })
                 .catch((error) => console.error(error));
         }
         setRefresh(false);
@@ -61,6 +69,11 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
                             setSelectedCategory(e.target.value);
                             setRefresh(true);
                         }}>
+                    {
+                        categoryList.map(c =>
+                            <option value={c.category}>{c.category + " (" + c.count + ")"}</option>
+                        )
+                    }
                     <option value={""}></option>
                     <option value={"Fishes"}>Fishes</option>
                     <option value={"Fruits"}>Friuts</option>

@@ -4,10 +4,12 @@ import User from "./components/User/User.tsx";
 import {menuNames, type Product} from "./utils/Interfaces.ts";
 import Products from "./components/Products/Products.tsx";
 import Navigation from "./components/Menus/Navigation.tsx"
+import OwnProduce from "./components/Products/OwnProduce.tsx";
 
 
 function App() {
     const [login, setLogin] = useState(``);
+    const [isSeller, setIsSeller] = useState(false);
     const [allProducts, setAllProducts] = useState<Product[]>([]);
     const [takenProducts, setTakenProducts] = useState<Product[]>([]);
     const [menuItem, setMenuItem] = useState(0);
@@ -28,14 +30,18 @@ function App() {
                 menuNames[menuItem] == "ABOUT" ?
                     "" :
                     <div className="container-fluid ">
-                        <div className="row">
-                            <Products listProducts={allProducts} setListProducts={setAllProducts}
-                                      listProducts2={takenProducts} setListProducts2={setTakenProducts}/>
-                            <User login={login} setLogin={setLogin}
-                                  listProducts={takenProducts} setListProducts={setTakenProducts}
-                                  listProducts2={takenProducts} setListProducts2={setTakenProducts}
-                            />
-                        </div>
+                        {
+                            isSeller ?
+                                <div className="row">
+                                    <Products listProducts={allProducts} setListProducts={setAllProducts}
+                                              listProducts2={takenProducts} setListProducts2={setTakenProducts}/>
+                                    <User login={login} setLogin={setLogin}
+                                          listProducts={takenProducts} setListProducts={setTakenProducts}
+                                          listProducts2={takenProducts} setListProducts2={setTakenProducts}
+                                    />
+                                </div>
+                                : <OwnProduce/>
+                        }
                     </div>
             }
         </>
