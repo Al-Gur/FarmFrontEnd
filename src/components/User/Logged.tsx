@@ -1,7 +1,7 @@
 import type {ReactNode} from "react";
 import type {LoggedProps} from "../../utils/Interfaces.ts"
-import ProductList from "../Products/ProductList.tsx";
-import Cart from "./Cart.tsx";
+import ProductList from "../Products/FarmProducts/ProductList.tsx";
+import Cart from "../Products/Cart/Cart.tsx";
 import './Logged.css'
 
 function Logged({login, setLogin, password, setPassword, listProducts, setListProducts,

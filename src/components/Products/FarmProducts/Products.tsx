@@ -1,10 +1,9 @@
 import {type ReactNode, useState} from "react";
-import type {Category, Product, ProductListDto, ProductsProps} from "../../utils/Interfaces.ts";
+import type {Category, Product, ProductListDto, ProductsProps} from "../../../utils/Interfaces.ts";
 // import AllProductList from "./AllProductList.tsx";
 import ProductList from "./ProductList.tsx";
 import "./Products.css"
-import {SERVER_URL} from "../../utils/Urls.ts";
-import login from "../User/Login.tsx";
+import {SERVER_URL} from "../../../utils/Urls.ts";
 
 function Products({listProducts, setListProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
 

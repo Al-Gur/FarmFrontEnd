@@ -2,9 +2,9 @@ import {useState} from 'react'
 import './App.css'
 import User from "./components/User/User.tsx";
 import {menuNames, type Product} from "./utils/Interfaces.ts";
-import Products from "./components/Products/Products.tsx";
+import Products from "./components/Products/FarmProducts/Products.tsx";
 import Navigation from "./components/Menus/Navigation.tsx"
-import OwnProduce from "./components/Products/OwnProduce.tsx";
+import OwnProduce from "./components/Products/OwnProduce/OwnProduce.tsx";
 
 
 function App() {

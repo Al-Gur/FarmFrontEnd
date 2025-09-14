@@ -1,6 +1,6 @@
 import {type ReactNode} from "react";
-import type {Product, ProductsProps} from "../../utils/Interfaces.ts";
-import ProductList from "../Products/ProductList.tsx";
+import type {Product, ProductsProps} from "../../../utils/Interfaces.ts";
+import ProductList from "../FarmProducts/ProductList.tsx";
 
 
 function Cart({listProducts, setListProducts}: ProductsProps): ReactNode {

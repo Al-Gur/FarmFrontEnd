@@ -1,5 +1,5 @@
 import {type ReactNode, useState} from "react";
-import type {ProductCardProps} from "../../utils/Interfaces.ts";
+import type {ProductCardProps} from "../../../utils/Interfaces.ts";
 import './ProductCard.css'
 import ProductBigCard from "./ProductBigCard.tsx";
 

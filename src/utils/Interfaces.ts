@@ -41,6 +41,12 @@ export interface ProductCardProps {
     closeBigCard: () => void;
 }
 
+export interface AddProductProps {
+    value: Product,
+    setProduct: (value: Product) => void,
+    closeBigCard?: () => void;
+}
+
 export interface UserProps {
     login: string,
     setLogin: (login: string) => void,

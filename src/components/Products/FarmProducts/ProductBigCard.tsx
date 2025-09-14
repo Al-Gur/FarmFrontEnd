@@ -1,7 +1,7 @@
 import {type ReactNode, useState} from "react";
 import './ProductBigCard.css'
-import '../Common/FarmStyles.css'
-import type {ProductCardProps} from "../../utils/Interfaces.ts";
+import '../../Common/FarmStyles.css'
+import type {ProductCardProps} from "../../../utils/Interfaces.ts";
 
 function ProductBigCard({value, addToCart, closeBigCard}: ProductCardProps): ReactNode {
     const cardBigID = "cardBig" + value.id;

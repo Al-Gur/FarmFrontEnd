@@ -1,0 +1,15 @@
+.products-refresh {
+    border: 1px solid lightpink;
+    border-radius: 10px;
+    padding-top: 5px;
+    background-color: #bbddff;
+    height: 40px;
+    left: 25%;
+    width: 50%;
+    position: relative;
+    cursor: pointer;
+}
+
+.max-price {
+    width: 80px;
+}
