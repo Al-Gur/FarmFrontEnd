@@ -5,17 +5,6 @@ import OwnProductList from "./OwnProductList.tsx";
 function OwnProduce(): ReactNode {
     const [ownProducts, setOwnProducts] = useState<Product[]>([]);
 
-    return (
-        <div>
-            <OwnProductList listProducts2={ownProducts} setListProducts2={setOwnProducts}/>
-        </div>
-    );
-}
-
-
-
- {
-
     // const [refresh, setRefresh] = useState(true);
     //
     // const refreshProducts = async () => {
@@ -63,10 +52,10 @@ function OwnProduce(): ReactNode {
 
     return (
         <div className="card col-7 col-xl-8 me-5 p-2">
-            <OwnProductList listProducts={listProducts} setListProducts={setListProducts2}/>
-            <div className="mt-3 mb-1 products-refresh" onClick={() => refreshProducts()}>
-                Refresh
-            </div>
+            <OwnProductList listProducts2={ownProducts} setListProducts2={setOwnProducts}/>
+            {/*<div className="mt-3 mb-1 products-refresh" onClick={() => refreshProducts()}>*/}
+            {/*    Refresh*/}
+            {/*</div>*/}
         </div>
     );
 }

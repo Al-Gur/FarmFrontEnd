@@ -9,7 +9,7 @@ import OwnProduce from "./components/Products/OwnProduce/OwnProduce.tsx";
 
 function App() {
     const [login, setLogin] = useState(``);
-    const [isSeller, setIsSeller] = useState(false);
+    const [isSeller, setIsSeller] = useState(true);
     const [allProducts, setAllProducts] = useState<Product[]>([]);
     const [takenProducts, setTakenProducts] = useState<Product[]>([]);
     const [menuItem, setMenuItem] = useState(0);

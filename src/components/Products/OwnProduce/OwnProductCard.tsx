@@ -1,6 +1,6 @@
 import {type ReactNode, useState} from "react";
 import type {AddProductProps} from "../../../utils/Interfaces.ts";
-import './ProductCard.css'
+import '../FarmProducts/ProductCard.css'
 import OwnProductBigCard from "./OwnProductBigCard.tsx";
 
 function OwnProductCard({value, setProduct}: AddProductProps): ReactNode {
