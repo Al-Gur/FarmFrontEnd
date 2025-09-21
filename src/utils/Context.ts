@@ -3,5 +3,6 @@ import type {MainContextValue} from "./Interfaces.ts";
 
 export const mainContext = createContext<MainContextValue>({
     login: "",
+    fullName: "",
     isSeller: false
 });

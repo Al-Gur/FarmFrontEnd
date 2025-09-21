@@ -1,5 +1,6 @@
 export interface MainContextValue {
     login: string,
+    fullName: string,
     isSeller: boolean
 }
 
@@ -55,6 +56,7 @@ export interface AddProductProps {
 export interface UserProps {
     login: string,
     setLogin: (login: string) => void,
+    setFullName: (fullName: string) => void,
     listProducts: Product[],
     setListProducts: (list: Product[]) => void
     listProducts2: Product[],
@@ -75,6 +77,7 @@ export interface LoggedProps {
 export interface SetAuthProps {
     setLogin: (login: string) => void,
     setPassword: (password: string) => void
+    setFullName: (fullName: string) => void
 }
 
 

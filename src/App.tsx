@@ -8,7 +8,8 @@ import Navigation from "./components/Menus/Navigation.tsx"
 import OwnProduce from "./components/Products/OwnProduce/OwnProduce.tsx";
 
 function App() {
-    const [login, setLogin] = useState("Michael");
+    const [login, setLogin] = useState("");
+    const [fullName, setFullName] = useState("");
     const [isSeller, setIsSeller] = useState(true);
     const [allProducts, setAllProducts] = useState<Product[]>([]);
     const [takenProducts, setTakenProducts] = useState<Product[]>([]);
@@ -16,7 +17,7 @@ function App() {
 
     const logOut = () => {
         setLogin("");
-        setIsSeller(false);
+        //
     }
 
     useEffect(() => {
@@ -26,9 +27,13 @@ function App() {
         }
     }, [menuItem]);
 
+    useEffect(() => {
+        setIsSeller(login == "John");
+    }, [login]);
+
     return (
         <>
-            <mainContext.Provider value={{login, isSeller}}>
+            <mainContext.Provider value={{login, fullName, isSeller}}>
                 {/*<div>*/}
                 {/*  <a href="https://vite.dev" target="_blank">*/}
                 {/*    <img src={viteLogo} className="logo" alt="Vite logo" />*/}
@@ -54,7 +59,7 @@ function App() {
                                     <div className="row">
                                         <Products listProducts={allProducts} setListProducts={setAllProducts}
                                                   listProducts2={takenProducts} setListProducts2={setTakenProducts}/>
-                                        <User login={login} setLogin={setLogin}
+                                        <User login={login} setLogin={setLogin} setFullName={setFullName}
                                               listProducts={takenProducts} setListProducts={setTakenProducts}
                                               listProducts2={takenProducts} setListProducts2={setTakenProducts}
                                         />

@@ -5,7 +5,8 @@ import Login from "./Login.tsx";
 import './User.css'
 
 
-function User({login, setLogin, listProducts, setListProducts, listProducts2, setListProducts2}: UserProps): ReactNode {
+function User({login, setLogin, setFullName,
+                  listProducts, setListProducts, listProducts2, setListProducts2}: UserProps): ReactNode {
     const [password, setPassword] = useState(``);
 
     useEffect(() => {
@@ -21,7 +22,7 @@ function User({login, setLogin, listProducts, setListProducts, listProducts2, se
                     <Logged login={login} setLogin={setLogin} password={password} setPassword={setPassword}
                             listProducts={listProducts} setListProducts={setListProducts}
                             listProducts2={listProducts2} setListProducts2={setListProducts2}/>
-                    : <Login setLogin={setLogin} setPassword={setPassword}/>
+                    : <Login setLogin={setLogin} setPassword={setPassword} setFullName={setFullName}/>
             }
         </div>
     )

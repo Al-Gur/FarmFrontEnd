@@ -3,7 +3,7 @@ import type {SetAuthProps, UserDto} from "../../utils/Interfaces.ts"
 import Register from "./Register.tsx";
 import {createPortal} from "react-dom";
 
-function Login({setLogin, setPassword}: SetAuthProps): ReactNode {
+function Login({setLogin, setPassword, setFullName}: SetAuthProps): ReactNode {
     const [registration, setRegistration] = useState(false);
     const [newLogin, setNewLogin] = useState("");
     const [newPassword, setNewPassword] = useState("");
@@ -22,7 +22,11 @@ function Login({setLogin, setPassword}: SetAuthProps): ReactNode {
             .then((response) => response.json())
             .then((result: UserDto) => {
                 console.log(result);
-                setLogin(result.login)
+
+                setLogin(newLogin);
+//                setLogin(result.login)
+
+                setFullName(result.fullNames);
             })
             .catch((error) => console.error(error));
     }
