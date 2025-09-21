@@ -11,7 +11,7 @@ function Navigation({menuItem, setMenuItem, login}: MenuProps): ReactNode {
                         {
                             menuItems
                                 .filter((_item, index) =>
-                                    login || menuNames[index] != "ACCOUNT")
+                                    login || (menuNames[index] != "ACCOUNT" && menuNames[index] != "LOGOUT"))
                                 .map((item, index) =>
                                     <li className="nav-item" key={index} onClick={() => setMenuItem(index)}>
                                         <a className={"nav-link" + (index == menuItem ? " active" : "")} href="#">

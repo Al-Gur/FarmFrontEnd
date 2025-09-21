@@ -31,30 +31,32 @@ function OwnProductList({listProducts2, setListProducts2}: ProductListProps): Re
     // }
 
     return (
-        <section className="flex-container">
+        <>
             <div>
                 <button onClick={() => setIsNewProductBigCard(true)}>Add product</button>
             </div>
-            {
-                isNewProductBigCard ?
-                    <OwnProductBigCard value={{...emptyValue}} setProduct={newValue => {
-                        setListProducts2!([...listProducts2!, newValue]);
-                    }}
-                                       closeBigCard={() => setIsNewProductBigCard(false)}/>
-                    : ""
-            }
-            {
-                listProducts2!
-                    .map((value, index) =>
-                        <OwnProductCard key={index} value={{...value}}
-                                        setProduct={newValue => {
-                                            const newListProduct = [...listProducts2!];
-                                            newListProduct[index] = newValue;
-                                            setListProducts2!(newListProduct);
-                                        }}/>
-                    )
-            }
-        </section>
+            <section className="flex-container">
+                {
+                    isNewProductBigCard ?
+                        <OwnProductBigCard value={{...emptyValue}} setProduct={newValue => {
+                            setListProducts2!([...listProducts2!, newValue]);
+                        }}
+                                           closeBigCard={() => setIsNewProductBigCard(false)}/>
+                        : ""
+                }
+                {
+                    listProducts2!
+                        .map((value, index) =>
+                            <OwnProductCard key={index} value={{...value}}
+                                            setProduct={newValue => {
+                                                const newListProduct = [...listProducts2!];
+                                                newListProduct[index] = newValue;
+                                                setListProducts2!(newListProduct);
+                                            }}/>
+                        )
+                }
+            </section>
+        </>
     );
 }
 

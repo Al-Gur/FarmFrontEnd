@@ -26,6 +26,9 @@ function OwnProductCard({value, setProduct}: AddProductProps): ReactNode {
                 <div className="product-quantity">
                     Quantity: {value.quantity}
                 </div>
+                <div className="product-category">
+                    Category: {value.category}
+                </div>
             </div>
             {
                 isBigCard ?

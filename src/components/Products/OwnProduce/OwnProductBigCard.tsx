@@ -34,7 +34,7 @@ function OwnProductBigCard({value, setProduct, closeBigCard}: AddProductProps): 
         }}>
             <div className="product-big">
                 <span className="product-big-close-button" onClick={closeBigCard}>˟</span>
-                <div className="product-big-image-box">
+                <div className="own-product-big-image-box">
                     {
                         value.image ?
                             <img src={newValue.image} alt={newValue.name} className="product-big-image"/>
@@ -45,7 +45,7 @@ function OwnProductBigCard({value, setProduct, closeBigCard}: AddProductProps): 
                     <input type="url" id="productImageUrl" name="image" value={newValue.image}
                            onChange={changeValues}/>
                 </div>
-                <div className="product-big-name">
+                <div className="own-product-big-name">
                     <label htmlFor="productName" className="m-2">Product name:</label>
                     <input type="text" id="productName" name="name" value={newValue.name}
                            onChange={changeValues}/>

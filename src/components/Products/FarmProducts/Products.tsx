@@ -1,11 +1,14 @@
-import {type ReactNode, useState} from "react";
-import type {Category, Product, ProductListDto, ProductsProps} from "../../../utils/Interfaces.ts";
+import {type ReactNode, useContext, useState} from "react";
+import type {Category, ProductListDto, ProductsProps} from "../../../utils/Interfaces.ts";
 // import AllProductList from "./AllProductList.tsx";
 import ProductList from "./ProductList.tsx";
 import "./Products.css"
 import {SERVER_URL} from "../../../utils/Urls.ts";
+import {mainContext} from "../../../utils/Context.ts";
 
 function Products({listProducts, setListProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
+
+    const {isSeller} = useContext(mainContext);
 
     const [selectedCategory, setSelectedCategory] = useState("");
     const noCategories: Category[] = [];
@@ -13,7 +16,7 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
     const [maxPrice, setMaxPrice] = useState(0);
     const [sortBy, setSortBy] = useState("");
 
-    const [refresh, setRefresh] = useState(true);
+    const [refresh, setRefresh] = useState(false);
 
     const refreshProducts = async () => {
         console.log(`category=${selectedCategory}&maxprice=${maxPrice}&sort=${sortBy}`);
@@ -59,8 +62,8 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
     // }
 
     return (
-        <div className="card col-7 col-xl-8 me-5 p-2">
-            <section className="Filters">
+        <div className={"card p-2 " + isSeller ? "col-4 mb-5" : "col-7 col-xl-8 me-5"}>
+            <section className={"Filters " + isSeller ? "col-11" : ""}>
                 <h3>Products</h3>
                 <label className="me-2">Category:</label>
                 <select value={selectedCategory}
@@ -84,8 +87,8 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
                        }}
                 />
 
-                <label className="mx-2">Sort by:</label>
-                <select value={sortBy}
+                <label htmlFor="SortBy" className="mx-2">Sort by:</label>
+                <select id="SortBy" name="SortBy" value={sortBy}
                         onChange={(e) => {
                             setSortBy(e.target.value);
                             setRefresh(true);

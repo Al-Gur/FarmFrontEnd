@@ -97,5 +97,5 @@ export interface MenuProps {
     login: string
 }
 
-export const menuItems = ["Home", "About us", "My account"]
-export const menuNames = ["HOME", "ABOUT", "ACCOUNT"]
+export const menuItems = ["Home", "About us", "My account", "Log out"]
+export const menuNames = ["HOME", "ABOUT", "ACCOUNT", "LOGOUT"]
