@@ -16,10 +16,11 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
     const [maxPrice, setMaxPrice] = useState(0);
     const [sortBy, setSortBy] = useState("");
 
-    const [refresh, setRefresh] = useState(false);
+    const [refresh, setRefresh] = useState(true);
 
     const refreshProducts = async () => {
         console.log(`category=${selectedCategory}&maxprice=${maxPrice}&sort=${sortBy}`);
+        // console.log(`isSeller=${isSeller}`);
 
         if (selectedCategory || maxPrice || sortBy) {
             // const requestOptions: RequestInit = {
@@ -62,7 +63,7 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
     // }
 
     return (
-        <div className={"card p-2 " + isSeller ? "col-4 mb-5" : "col-7 col-xl-8 me-5"}>
+        <div className={"card p-2 " + (isSeller ? "col-4 mb-5" : "col-7 col-xl-8 me-5")}>
             <section className={"Filters " + isSeller ? "col-11" : ""}>
                 <h3>Products</h3>
                 <label className="me-2">Category:</label>

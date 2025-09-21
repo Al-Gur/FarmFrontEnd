@@ -8,7 +8,7 @@ import Navigation from "./components/Menus/Navigation.tsx"
 import OwnProduce from "./components/Products/OwnProduce/OwnProduce.tsx";
 
 function App() {
-    const [login, setLogin] = useState("");
+    const [login, setLogin] = useState("Michael");
     const [isSeller, setIsSeller] = useState(true);
     const [allProducts, setAllProducts] = useState<Product[]>([]);
     const [takenProducts, setTakenProducts] = useState<Product[]>([]);
@@ -16,6 +16,7 @@ function App() {
 
     const logOut = () => {
         setLogin("");
+        setIsSeller(false);
     }
 
     useEffect(() => {
