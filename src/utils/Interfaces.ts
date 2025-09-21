@@ -1,3 +1,8 @@
+export interface MainContextValue {
+    login: string,
+    isSeller: boolean
+}
+
 export interface Product {
     id: string,
     name: string,

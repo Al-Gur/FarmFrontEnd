@@ -2,13 +2,13 @@ import {useState} from 'react'
 import './App.css'
 import User from "./components/User/User.tsx";
 import {menuNames, type Product} from "./utils/Interfaces.ts";
+import {mainContext} from "./utils/Context.ts"
 import Products from "./components/Products/FarmProducts/Products.tsx";
 import Navigation from "./components/Menus/Navigation.tsx"
 import OwnProduce from "./components/Products/OwnProduce/OwnProduce.tsx";
 
-
 function App() {
-    const [login, setLogin] = useState(``);
+    const [login, setLogin] = useState("");
     const [isSeller, setIsSeller] = useState(true);
     const [allProducts, setAllProducts] = useState<Product[]>([]);
     const [takenProducts, setTakenProducts] = useState<Product[]>([]);
@@ -16,6 +16,7 @@ function App() {
 
     return (
         <>
+        <mainContext.Provider value={{login, isSeller}}>
             {/*<div>*/}
             {/*  <a href="https://vite.dev" target="_blank">*/}
             {/*    <img src={viteLogo} className="logo" alt="Vite logo" />*/}
@@ -45,6 +46,7 @@ function App() {
                         }
                     </div>
             }
+        </mainContext.Provider>
         </>
     )
 }

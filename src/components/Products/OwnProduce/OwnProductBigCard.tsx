@@ -1,22 +1,28 @@
-import {type ChangeEvent, type ReactNode, useState} from "react";
+import {type ChangeEvent, type ReactNode, useContext, useState} from "react";
 import './OwnProductBigCard.css'
 import '../../Common/FarmStyles.css'
 import type {AddProductProps} from "../../../utils/Interfaces.ts";
+import {mainContext} from "../../../utils/Context.ts";
 
 function OwnProductBigCard({value, setProduct, closeBigCard}: AddProductProps): ReactNode {
     const cardBigID = "cardBig" + value.id;
     const [newValue, setNewValue] = useState(value);
+    const {login, isSeller} = useContext(mainContext);
+
     const changeValues = (e: ChangeEvent<HTMLInputElement>) => {
         const res = {...newValue};
         // @ts-ignore
         res[e.target.name] = e.target.value;
+        res["producer"] = login;
         setNewValue(res);
+        console.log(`login = ${login} isSeller=${isSeller}`);
     }
 
     const changeNumbers = (e: ChangeEvent<HTMLInputElement>) => {
         const res = {...newValue};
         // @ts-ignore
         res[e.target.name] = +e.target.value;
+        res["producer"] = login;
         setNewValue(res);
     }
 
