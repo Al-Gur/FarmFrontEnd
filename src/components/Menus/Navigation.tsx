@@ -1,8 +1,12 @@
-import type {ReactNode} from "react";
+import {type ReactNode, useContext} from "react";
 import {menuItems, menuNames, type MenuProps} from "../../utils/Interfaces.ts";
 import About from "./About.tsx"
+import {mainContext} from "../../utils/Context.ts";
 
-function Navigation({menuItem, setMenuItem, login}: MenuProps): ReactNode {
+function Navigation({menuItem, setMenuItem}: MenuProps): ReactNode {
+
+    const {login} = useContext(mainContext);
+
     return (
         <>
             <nav className="navbar navbar-expand-sm nav-pills">

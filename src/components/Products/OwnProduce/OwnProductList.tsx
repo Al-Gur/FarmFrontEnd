@@ -14,7 +14,7 @@ function OwnProductList({listProducts2, setListProducts2}: ProductListProps): Re
         category: "",
         price: 0,
         quantity: 0,
-        producer: "USER"
+        producer: "ANONYMOUS"
     }
     //
     // const remaining = (product: Product) => {

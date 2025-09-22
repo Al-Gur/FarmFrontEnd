@@ -34,7 +34,7 @@ function Login({setLogin, setPassword, setFullName}: SetAuthProps): ReactNode {
     return (
         registration ?
             createPortal(
-            <Register setLogin={setLogin} setPassword={setPassword} setRegistration={setRegistration}/>
+                <Register setLogin={setLogin} setPassword={setPassword} setRegistration={setRegistration}/>
                 , document.body)
             :
             <div className="container card bg-success-subtle">

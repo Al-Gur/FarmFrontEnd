@@ -10,7 +10,7 @@ import OwnProduce from "./components/Products/OwnProduce/OwnProduce.tsx";
 function App() {
     const [login, setLogin] = useState("");
     const [fullName, setFullName] = useState("");
-    const [isSeller, setIsSeller] = useState(true);
+    const [isSeller, setIsSeller] = useState(false);
     const [allProducts, setAllProducts] = useState<Product[]>([]);
     const [takenProducts, setTakenProducts] = useState<Product[]>([]);
     const [menuItem, setMenuItem] = useState(0);
@@ -32,43 +32,33 @@ function App() {
     }, [login]);
 
     return (
-        <>
-            <mainContext.Provider value={{login, fullName, isSeller}}>
-                {/*<div>*/}
-                {/*  <a href="https://vite.dev" target="_blank">*/}
-                {/*    <img src={viteLogo} className="logo" alt="Vite logo" />*/}
-                {/*  </a>*/}
-                {/*  <a href="https://react.dev" target="_blank">*/}
-                {/*    <img src={reactLogo} className="logo react" alt="React logo" />*/}
-                {/*  </a>*/}
-                {/*</div>*/}
-                <h1>Generous farm</h1>
-                <Navigation menuItem={menuItem} setMenuItem={setMenuItem} login={login}/>
-                {
-                    menuNames[menuItem] == "ABOUT" ?
-                        "" :
-                        <div className="container-fluid ">
-                            {
-                                isSeller ?
-                                    <div className="row">
-                                        <OwnProduce/>
-                                        <Products listProducts={allProducts} setListProducts={setAllProducts}
-                                                  listProducts2={takenProducts} setListProducts2={setTakenProducts}/>
-                                    </div>
-                                    :
-                                    <div className="row">
-                                        <Products listProducts={allProducts} setListProducts={setAllProducts}
-                                                  listProducts2={takenProducts} setListProducts2={setTakenProducts}/>
-                                        <User login={login} setLogin={setLogin} setFullName={setFullName}
-                                              listProducts={takenProducts} setListProducts={setTakenProducts}
-                                              listProducts2={takenProducts} setListProducts2={setTakenProducts}
-                                        />
-                                    </div>
-                            }
-                        </div>
-                }
-            </mainContext.Provider>
-        </>
+        <mainContext.Provider value={{login, fullName, isSeller}}>
+            <h1>Generous farm</h1>
+            <Navigation menuItem={menuItem} setMenuItem={setMenuItem}/>
+            {
+                menuNames[menuItem] == "ABOUT" ?
+                    "" :
+                    <div className="container-fluid ">
+                        {
+                            isSeller ?
+                                <div className="row">
+                                    <OwnProduce/>
+                                    <Products listProducts={allProducts} setListProducts={setAllProducts}
+                                              listProducts2={takenProducts} setListProducts2={setTakenProducts}/>
+                                </div>
+                                :
+                                <div className="row">
+                                    <Products listProducts={allProducts} setListProducts={setAllProducts}
+                                              listProducts2={takenProducts} setListProducts2={setTakenProducts}/>
+                                    <User login={login} setLogin={setLogin} setFullName={setFullName}
+                                          listProducts={takenProducts} setListProducts={setTakenProducts}
+                                          listProducts2={takenProducts} setListProducts2={setTakenProducts}
+                                    />
+                                </div>
+                        }
+                    </div>
+            }
+        </mainContext.Provider>
     )
 }
 

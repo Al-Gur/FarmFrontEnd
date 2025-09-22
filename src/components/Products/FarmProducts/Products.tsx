@@ -74,7 +74,9 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
                         }}>
                     {
                         categoryList.map(c =>
-                            <option value={c.category} key={c.category}>{c.category + " (" + c.count + ")"}</option>
+                            <option value={c.category == "All" ? "" : c.category} key={c.category}>
+                                {c.category + " (" + c.count + ")"}
+                            </option>
                         )
                     }
                 </select>
