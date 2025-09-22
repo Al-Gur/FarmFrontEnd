@@ -5,7 +5,7 @@ import {SERVER_URL} from "../../../utils/Urls.ts";
 import {mainContext} from "../../../utils/Context.ts";
 
 function OwnProduce(): ReactNode {
-    const {fullName} = useContext(mainContext);
+    const {fullName, login} = useContext(mainContext);
     const [ownProducts, setOwnProducts] = useState<Product[]>([]);
     const [refresh, setRefresh] = useState(true);
 
@@ -15,6 +15,7 @@ function OwnProduce(): ReactNode {
             .then((result: ProductListDto) => {
                 console.log(result);
                 console.log(fullName);
+                console.log(login);
                 setOwnProducts(result.products.filter(product => product.producer == "John Smith"));
             })
             .catch((error) => console.error(error));

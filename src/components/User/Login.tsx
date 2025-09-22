@@ -26,7 +26,7 @@ function Login({setLogin, setPassword, setFullName}: SetAuthProps): ReactNode {
                 setLogin(newLogin);
 //                setLogin(result.login)
 
-                setFullName(result.fullNames);
+                setFullName(result.fullName);
             })
             .catch((error) => console.error(error));
     }

@@ -89,7 +89,7 @@ export interface RegisterProps {
 
 export interface UserDto {
     login: string,
-    fullNames: string,
+    fullName: string,
     roles: string[]
 }
 
