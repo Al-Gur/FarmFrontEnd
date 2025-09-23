@@ -1,8 +1,9 @@
 import {type ReactNode, useState} from "react";
-import type {Product, ProductListProps} from "../../../utils/Interfaces.ts";
+import type {Product, ProductListDto, ProductListProps} from "../../../utils/Interfaces.ts";
 import '../FarmProducts/ProductList.css'
 import OwnProductCard from "./OwnProductCard.tsx";
 import OwnProductBigCard from "./OwnProductBigCard.tsx";
+import {SERVER_URL} from "../../../utils/Urls.ts";
 
 function OwnProductList({listProducts2, setListProducts2}: ProductListProps): ReactNode {
 
@@ -16,19 +17,38 @@ function OwnProductList({listProducts2, setListProducts2}: ProductListProps): Re
         quantity: 0,
         producer: "ANONYMOUS"
     }
-    //
-    // const remaining = (product: Product) => {
-    //     if (listProducts2) {
-    //         return {
-    //             ...product,
-    //             quantity: product.quantity - listProducts2
-    //                 .filter((product2) => product2.id == product.id)
-    //                 .reduce((sum, product2) => sum + product2.quantity, 0)
-    //         };
-    //     } else {
-    //         return product;
-    //     }
-    // }
+
+
+    const addProduct = (value: Product) => {
+        setListProducts2!([...listProducts2!, value]);
+
+        const myHeaders = new Headers();
+        myHeaders.append("Authorization", "Basic Sm9objoxMjM=");
+        myHeaders.append("Content-Type", "application/json")
+
+        const addingValue = {
+            name: value.name,
+            image: "q",
+            category: "a",
+            price: 1,
+            quantity: 1,
+        }
+        const body = JSON.stringify(addingValue);
+        console.log(body);
+
+        fetch(SERVER_URL + "products/product", {
+            method: "POST",
+            body: body,
+            headers: myHeaders
+        })
+            .then((response) => response.json())
+            .then(result => {
+                console.log(result);
+                return result;
+            })
+            .catch((error) => console.error(error));
+    }
+    const updateProduct = (value: Product) => {}
 
     return (
         <>
@@ -38,9 +58,7 @@ function OwnProductList({listProducts2, setListProducts2}: ProductListProps): Re
             <section className="flex-container">
                 {
                     isNewProductBigCard ?
-                        <OwnProductBigCard value={{...emptyValue}} setProduct={newValue => {
-                            setListProducts2!([...listProducts2!, newValue]);
-                        }}
+                        <OwnProductBigCard value={{...emptyValue}} setProduct={addProduct}
                                            closeBigCard={() => setIsNewProductBigCard(false)}/>
                         : ""
                 }
