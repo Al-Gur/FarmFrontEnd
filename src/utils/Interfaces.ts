@@ -99,5 +99,5 @@ export interface MenuProps {
     setMenuItem: (item: number) => void
 }
 
-export const menuItems = ["Home", "About us", "My account", "Log out"]
-export const menuNames = ["HOME", "ABOUT", "ACCOUNT", "LOGOUT"]
+export const menuItems = ["Home", "About us", "Feedback", "My account", "Log out"]
+export const menuNames = ["HOME", "ABOUT", "FEEDBACK", "ACCOUNT", "LOGOUT"]
