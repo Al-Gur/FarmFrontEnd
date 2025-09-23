@@ -1,9 +1,11 @@
-import {type ReactNode, useState} from "react";
-import type {AddProductProps} from "../../../utils/Interfaces.ts";
+import {type ReactNode, useContext, useState} from "react";
+import type {AddProductProps, Product} from "../../../utils/Interfaces.ts";
 import '../FarmProducts/ProductCard.css'
 import OwnProductBigCard from "./OwnProductBigCard.tsx";
+import {mainContext} from "../../../utils/Context.ts";
+import {SERVER_URL} from "../../../utils/Urls.ts";
 
-function OwnProductCard({value, setProduct}: AddProductProps): ReactNode {
+function OwnProductCard({value, setProduct, removeProduct}: AddProductProps): ReactNode {
 
     const [isBigCard, setIsBigCard] = useState(false);
 
@@ -32,8 +34,17 @@ function OwnProductCard({value, setProduct}: AddProductProps): ReactNode {
             </div>
             {
                 isBigCard ?
-                    <OwnProductBigCard value={value} setProduct={setProduct}
-                                    closeBigCard={() => setIsBigCard(false)}/>
+                    <>
+                        <OwnProductBigCard value={value} setProduct={setProduct}
+                                           closeBigCard={() => setIsBigCard(false)}>
+                            <div className="product-own-big-take col-3" onClick={() => {
+                                if (confirm("Are you sure to remove product " + value.name + " from database?")) {
+                                    removeProduct(value);
+                                }
+                                setIsBigCard(false);
+                            }}>Remove</div>
+                        </OwnProductBigCard>
+                    </>
                     : ""
             }
         </>

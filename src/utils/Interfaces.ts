@@ -50,6 +50,7 @@ export interface ProductCardProps {
 export interface AddProductProps {
     value: Product,
     setProduct: (value: Product) => void,
+    removeProduct: (value: Product) => void,
     closeBigCard?: () => void;
 }
 

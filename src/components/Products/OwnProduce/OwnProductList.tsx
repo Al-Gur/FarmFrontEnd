@@ -1,5 +1,5 @@
 import {type ReactNode, useState} from "react";
-import type {Product, ProductListDto, ProductListProps} from "../../../utils/Interfaces.ts";
+import type {Product, ProductListProps} from "../../../utils/Interfaces.ts";
 import '../FarmProducts/ProductList.css'
 import OwnProductCard from "./OwnProductCard.tsx";
 import OwnProductBigCard from "./OwnProductBigCard.tsx";
@@ -18,7 +18,6 @@ function OwnProductList({listProducts2, setListProducts2}: ProductListProps): Re
         producer: "ANONYMOUS"
     }
 
-
     const addProduct = (value: Product) => {
         setListProducts2!([...listProducts2!, value]);
 
@@ -26,19 +25,9 @@ function OwnProductList({listProducts2, setListProducts2}: ProductListProps): Re
         myHeaders.append("Authorization", "Basic Sm9objoxMjM=");
         myHeaders.append("Content-Type", "application/json")
 
-        const addingValue = {
-            name: value.name,
-            image: "q",
-            category: "a",
-            price: 1,
-            quantity: 1,
-        }
-        const body = JSON.stringify(addingValue);
-        console.log(body);
-
         fetch(SERVER_URL + "products/product", {
             method: "POST",
-            body: body,
+            body: JSON.stringify(value),
             headers: myHeaders
         })
             .then((response) => response.json())
@@ -48,7 +37,29 @@ function OwnProductList({listProducts2, setListProducts2}: ProductListProps): Re
             })
             .catch((error) => console.error(error));
     }
-    const updateProduct = (value: Product) => {}
+    const updateProduct = (value: Product) => {
+    }
+
+    const removeProduct = (value: Product) => {
+        setListProducts2!(listProducts2!.filter(product => product.id != value.id));
+
+        const myHeaders = new Headers();
+        myHeaders.append("Authorization", "Basic Sm9objoxMjM=");
+
+        console.log(value.id);
+
+        fetch(SERVER_URL + "products/productdelete/"+ value.id, {
+            method: "POST",
+            headers: myHeaders
+        })
+            .then((response) => response.json())
+            .then(result => {
+                console.log(result);
+                return result;
+            })
+            .catch((error) => console.error(error));
+    }
+
 
     return (
         <>
@@ -70,7 +81,9 @@ function OwnProductList({listProducts2, setListProducts2}: ProductListProps): Re
                                                 const newListProduct = [...listProducts2!];
                                                 newListProduct[index] = newValue;
                                                 setListProducts2!(newListProduct);
-                                            }}/>
+                                            }}
+                                            removeProduct={removeProduct}
+                            />
                         )
                 }
             </section>

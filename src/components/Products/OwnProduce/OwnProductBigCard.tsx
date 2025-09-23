@@ -4,25 +4,22 @@ import '../../Common/FarmStyles.css'
 import type {AddProductProps} from "../../../utils/Interfaces.ts";
 import {mainContext} from "../../../utils/Context.ts";
 
-function OwnProductBigCard({value, setProduct, closeBigCard}: AddProductProps): ReactNode {
+function OwnProductBigCard(props: AddProductProps): ReactNode {
+    const {value, setProduct, closeBigCard} = props;
     const cardBigID = "cardBig" + value.id;
     const [newValue, setNewValue] = useState(value);
-    const {login, isSeller} = useContext(mainContext);
 
     const changeValues = (e: ChangeEvent<HTMLInputElement>) => {
         const res = {...newValue};
         // @ts-ignore
         res[e.target.name] = e.target.value;
-        res["producer"] = login;
         setNewValue(res);
-        console.log(`login = ${login} isSeller=${isSeller}`);
     }
 
     const changeNumbers = (e: ChangeEvent<HTMLInputElement>) => {
         const res = {...newValue};
         // @ts-ignore
         res[e.target.name] = +e.target.value;
-        res["producer"] = login;
         setNewValue(res);
     }
 
@@ -65,14 +62,17 @@ function OwnProductBigCard({value, setProduct, closeBigCard}: AddProductProps): 
                     <input type="text" id="productCategory" name="category" value={newValue.category}
                            onChange={changeValues}/>
                 </div>
-                <div className="row">
-                    <div className="product-big-take col-5 me-2 ms-4" onClick={() => {
+                <div className="row p-3">
+                    <div className="product-own-big-take col-3" onClick={() => {
                         setProduct(newValue);
                         closeBigCard!();
                     }}>
                         Accept
                     </div>
-                    <div className="product-big-take col-5 me-2 ms-4" onClick={() => closeBigCard!()}>
+                    {
+                        props.children
+                    }
+                    <div className="product-own-big-take col-3" onClick={() => closeBigCard!()}>
                         Cancel
                     </div>
                 </div>
