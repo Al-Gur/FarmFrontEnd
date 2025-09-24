@@ -1,5 +1,5 @@
 import {type ReactNode, useContext, useState} from "react";
-import type {Product, OwnProductListProps} from "../../../utils/Interfaces.ts";
+import type {OwnProductListProps, Product} from "../../../utils/Interfaces.ts";
 import '../FarmProducts/ProductList.css'
 import OwnProductCard from "./OwnProductCard.tsx";
 import OwnProductBigCard from "./OwnProductBigCard.tsx";
@@ -73,7 +73,7 @@ function OwnProductList({listProducts, setListProducts}: OwnProductListProps): R
         const myHeaders = new Headers();
         myHeaders.append("Authorization", "Basic Sm9objoxMjM=");
 
-        fetch(SERVER_URL + "products/productdelete/"+ value.id, {
+        fetch(SERVER_URL + "products/productdelete/" + value.id, {
             method: "POST",
             headers: myHeaders
         })
@@ -102,11 +102,11 @@ function OwnProductList({listProducts, setListProducts}: OwnProductListProps): R
                 }
                 {
                     listProducts.map((value, index) =>
-                            <OwnProductCard key={index} value={{...value}}
-                                            setProduct={updateProduct(index)}
-                                            removeProduct={removeProduct}
-                            />
-                        )
+                        <OwnProductCard key={index} value={{...value}}
+                                        setProduct={updateProduct(index)}
+                                        removeProduct={removeProduct}
+                        />
+                    )
                 }
             </section>
         </>

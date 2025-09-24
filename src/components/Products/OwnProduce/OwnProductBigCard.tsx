@@ -35,7 +35,7 @@ function OwnProductBigCard(props: AddProductProps): ReactNode {
                 closeBigCard!();
             }
         }}>
-            <div className="product-big">
+            <div className="own-product-big">
                 <span className="product-big-close-button" onClick={closeBigCard}>˟</span>
                 <div className="own-product-big-image-box">
                     {

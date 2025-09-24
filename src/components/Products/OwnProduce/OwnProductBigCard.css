@@ -1,9 +1,9 @@
-.product-big {
+.own-product-big {
     position: fixed;
     left: 30%;
-    top: 10%;
+    top: 7%;
     width: 40%;
-    height: 85%;
+    height: 90%;
     background-color: white;
     border-radius: 10px;
 }
