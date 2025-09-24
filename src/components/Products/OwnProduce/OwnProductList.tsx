@@ -89,9 +89,9 @@ function OwnProductList({listProducts, setListProducts}: OwnProductListProps): R
 
     return (
         <>
-            <div className="flex-container">
-                <h3>{fullName}</h3>
-                <button onClick={() => setIsNewProductBigCard(true)}>Add product</button>
+            <div className="flex-container bg-success-subtle p-2 mb-3">
+                <h4 className="text-decoration-underline">{fullName}</h4>
+                <button onClick={() => setIsNewProductBigCard(true)}>Add new product</button>
             </div>
             <section className="flex-container">
                 {

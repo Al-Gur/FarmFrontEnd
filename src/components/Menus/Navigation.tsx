@@ -11,7 +11,7 @@ function Navigation({menuItem, setMenuItem}: MenuProps): ReactNode {
         <>
             <nav className="navbar navbar-expand-sm nav-pills">
                 <div className="container-fluid justify-content-center">
-                    <ul className="navbar-nav">
+                    <ul className="navbar-nav bg-info-subtle rounded-2">
                         {
                             menuItems
                                 .filter((_item, index) =>

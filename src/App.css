@@ -10,6 +10,8 @@
 
 h1 {
     color: #50bb50;
+    background-image: url("/src/assets/Field.jpg");
+    border-radius: 15px;
 }
 
 .logo {

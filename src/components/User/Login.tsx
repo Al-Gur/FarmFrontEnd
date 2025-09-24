@@ -2,6 +2,7 @@ import {type ReactNode, useState} from "react";
 import type {SetAuthProps, UserDto} from "../../utils/Interfaces.ts"
 import Register from "./Register.tsx";
 import {createPortal} from "react-dom";
+import Encode from "./Encode.ts";
 
 function Login({setLogin, setPassword, setFullName}: SetAuthProps): ReactNode {
     const [registration, setRegistration] = useState(false);
@@ -10,7 +11,7 @@ function Login({setLogin, setPassword, setFullName}: SetAuthProps): ReactNode {
 
     const logIn = async () => {
         const myHeaders = new Headers();
-        myHeaders.append("Authorization", "Basic Sm9objoxMjM=");
+        myHeaders.append("Authorization", Encode(newLogin));
 
         const requestOptions = {
             method: "POST",

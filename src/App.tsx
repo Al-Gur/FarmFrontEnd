@@ -32,6 +32,7 @@ function App() {
 
     useEffect(() => {
         setIsSeller(login == "John");
+        setRefresh(true);
     }, [login]);
 
     return (
