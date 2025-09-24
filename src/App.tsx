@@ -31,7 +31,7 @@ function App() {
     }, [menuItem]);
 
     useEffect(() => {
-        setIsSeller(login == "John");
+        setIsSeller(login == "John" || login == "Mary");
         setRefresh(true);
     }, [login]);
 
