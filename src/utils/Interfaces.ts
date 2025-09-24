@@ -1,11 +1,3 @@
-export interface MainContextValue {
-    login: string,
-    fullName: string,
-    isSeller: boolean,
-    refresh: boolean,
-    setRefresh: (refresh: boolean) => void
-}
-
 export interface Product {
     id: string,
     name: string,
@@ -19,6 +11,16 @@ export interface Product {
 export interface Category {
     category: string,
     count: number
+}
+
+export interface MainContextValue {
+    login: string,
+    fullName: string,
+    isSeller: boolean,
+    refresh: boolean,
+    setRefresh: (refresh: boolean) => void,
+    categoryList: Category[],
+    setCategoryList: (categoryList: Category[]) => void
 }
 
 export interface ProductListDto {

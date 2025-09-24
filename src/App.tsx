@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import './App.css'
 import User from "./components/User/User.tsx";
-import {menuNames, type Product} from "./utils/Interfaces.ts";
+import {type Category, menuNames, type Product} from "./utils/Interfaces.ts";
 import {mainContext} from "./utils/Context.ts"
 import Products from "./components/Products/FarmProducts/Products.tsx";
 import Navigation from "./components/Menus/Navigation.tsx"
@@ -13,6 +13,8 @@ function App() {
     const [isSeller, setIsSeller] = useState(false);
     const [allProducts, setAllProducts] = useState<Product[]>([]);
     const [takenProducts, setTakenProducts] = useState<Product[]>([]);
+    const noCategories: Category[] = [];
+    const [categoryList, setCategoryList] = useState(noCategories);
     const [refresh, setRefresh] = useState(true);
     const [menuItem, setMenuItem] = useState(0);
 
@@ -33,7 +35,7 @@ function App() {
     }, [login]);
 
     return (
-        <mainContext.Provider value={{login, fullName, isSeller, refresh, setRefresh}}>
+        <mainContext.Provider value={{login, fullName, isSeller, refresh, setRefresh, categoryList, setCategoryList}}>
             <h1>Generous farm</h1>
             <Navigation menuItem={menuItem} setMenuItem={setMenuItem}/>
             {

@@ -8,11 +8,9 @@ import {mainContext} from "../../../utils/Context.ts";
 
 function Products({listProducts, setListProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
 
-    const {isSeller, refresh, setRefresh} = useContext(mainContext);
+    const {isSeller, refresh, setRefresh, categoryList, setCategoryList} = useContext(mainContext);
 
     const [selectedCategory, setSelectedCategory] = useState("");
-    const noCategories: Category[] = [];
-    const [categoryList, setCategoryList] = useState(noCategories);
     const [maxPrice, setMaxPrice] = useState(0);
     const [sortBy, setSortBy] = useState("");
 

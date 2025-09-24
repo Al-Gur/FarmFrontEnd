@@ -6,20 +6,22 @@ import {mainContext} from "../../../utils/Context.ts";
 
 function OwnProduce(): ReactNode {
 
-    const {login, refresh} = useContext(mainContext);
+    const {fullName} = useContext(mainContext);
     const [ownProducts, setOwnProducts] = useState<Product[]>([]);
+    const [ownRefresh, setOwnRefresh] = useState(true);
 
     useEffect(() => {
-        if (refresh) {
+        if (ownRefresh) {
             fetch(SERVER_URL + "products/showall")
                 .then((response) => response.json())
                 .then((result: ProductListDto) => {
                     console.log(result);
-                    setOwnProducts(result.products.filter(product => product.producer == login));
+                    setOwnProducts(result.products.filter(product => product.producer == fullName));
                 })
                 .catch((error) => console.error(error));
+            setOwnRefresh(false);
         }
-    }, [refresh]);
+    }, [ownRefresh]);
 
     return (
         <div className="card col-7 me-5 p-2">
