@@ -36,11 +36,10 @@ function OwnProductList({listProducts, setListProducts}: OwnProductListProps): R
             .then((response) => response.json())
             .then(result => {
                 console.log(result);
+                setRefresh(true);
                 return result;
             })
             .catch((error) => console.error(error));
-
-        setRefresh(true);
     }
 
     const updateProduct = (index: number) => (value: Product) => {
@@ -62,11 +61,10 @@ function OwnProductList({listProducts, setListProducts}: OwnProductListProps): R
             .then((response) => response.json())
             .then(result => {
                 console.log(result);
+                setRefresh(true);
                 return result;
             })
             .catch((error) => console.error(error));
-
-        setRefresh(true);
     }
 
     const removeProduct = (value: Product) => {
@@ -82,11 +80,10 @@ function OwnProductList({listProducts, setListProducts}: OwnProductListProps): R
             .then((response) => response.json())
             .then(result => {
                 console.log(result);
+                setRefresh(true);
                 return result;
             })
             .catch((error) => console.error(error));
-
-        setRefresh(true);
     }
 
 
