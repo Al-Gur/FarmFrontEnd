@@ -1,11 +1,14 @@
-import {type ReactNode, useState} from "react";
-import type {Product, ProductListProps} from "../../../utils/Interfaces.ts";
+import {type ReactNode, useContext, useState} from "react";
+import type {Product, OwnProductListProps} from "../../../utils/Interfaces.ts";
 import '../FarmProducts/ProductList.css'
 import OwnProductCard from "./OwnProductCard.tsx";
 import OwnProductBigCard from "./OwnProductBigCard.tsx";
 import {SERVER_URL} from "../../../utils/Urls.ts";
+import {mainContext} from "../../../utils/Context.ts";
 
-function OwnProductList({listProducts2, setListProducts2}: ProductListProps): ReactNode {
+function OwnProductList({listProducts, setListProducts}: OwnProductListProps): ReactNode {
+
+    const {fullName, setRefresh} = useContext(mainContext);
 
     const [isNewProductBigCard, setIsNewProductBigCard] = useState(false);
     const emptyValue: Product = {
@@ -19,7 +22,7 @@ function OwnProductList({listProducts2, setListProducts2}: ProductListProps): Re
     }
 
     const addProduct = (value: Product) => {
-        setListProducts2!([...listProducts2!, value]);
+        setListProducts([...listProducts, value]);
 
         const myHeaders = new Headers();
         myHeaders.append("Authorization", "Basic Sm9objoxMjM=");
@@ -36,17 +39,41 @@ function OwnProductList({listProducts2, setListProducts2}: ProductListProps): Re
                 return result;
             })
             .catch((error) => console.error(error));
-    }
-    const updateProduct = (value: Product) => {
+
+        setRefresh(true);
     }
 
-    const removeProduct = (value: Product) => {
-        setListProducts2!(listProducts2!.filter(product => product.id != value.id));
+    const updateProduct = (index: number) => (value: Product) => {
+        const newListProduct = [...listProducts];
+        newListProduct[index] = value;
+        setListProducts(newListProduct);
 
         const myHeaders = new Headers();
         myHeaders.append("Authorization", "Basic Sm9objoxMjM=");
+        myHeaders.append("Content-Type", "application/json");
 
         console.log(value.id);
+
+        fetch(SERVER_URL + "products/productput", {
+            method: "POST",
+            body: JSON.stringify(value),
+            headers: myHeaders
+        })
+            .then((response) => response.json())
+            .then(result => {
+                console.log(result);
+                return result;
+            })
+            .catch((error) => console.error(error));
+
+        setRefresh(true);
+    }
+
+    const removeProduct = (value: Product) => {
+        setListProducts(listProducts.filter(product => product.id != value.id));
+
+        const myHeaders = new Headers();
+        myHeaders.append("Authorization", "Basic Sm9objoxMjM=");
 
         fetch(SERVER_URL + "products/productdelete/"+ value.id, {
             method: "POST",
@@ -58,12 +85,15 @@ function OwnProductList({listProducts2, setListProducts2}: ProductListProps): Re
                 return result;
             })
             .catch((error) => console.error(error));
+
+        setRefresh(true);
     }
 
 
     return (
         <>
-            <div>
+            <div className="flex-container">
+                <h3>{fullName}</h3>
                 <button onClick={() => setIsNewProductBigCard(true)}>Add product</button>
             </div>
             <section className="flex-container">
@@ -74,14 +104,9 @@ function OwnProductList({listProducts2, setListProducts2}: ProductListProps): Re
                         : ""
                 }
                 {
-                    listProducts2!
-                        .map((value, index) =>
+                    listProducts.map((value, index) =>
                             <OwnProductCard key={index} value={{...value}}
-                                            setProduct={newValue => {
-                                                const newListProduct = [...listProducts2!];
-                                                newListProduct[index] = newValue;
-                                                setListProducts2!(newListProduct);
-                                            }}
+                                            setProduct={updateProduct(index)}
                                             removeProduct={removeProduct}
                             />
                         )

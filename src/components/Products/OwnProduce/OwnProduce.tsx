@@ -5,36 +5,25 @@ import {SERVER_URL} from "../../../utils/Urls.ts";
 import {mainContext} from "../../../utils/Context.ts";
 
 function OwnProduce(): ReactNode {
-    const {fullName, login} = useContext(mainContext);
-    const [ownProducts, setOwnProducts] = useState<Product[]>([]);
-    const [refresh, setRefresh] = useState(true);
 
-    const refreshProducts = async () => {
-        fetch(SERVER_URL + "products/showall")
-            .then((response) => response.json())
-            .then((result: ProductListDto) => {
-                console.log(result);
-                console.log(fullName);
-                console.log(login);
-                setOwnProducts(result.products.filter(product => product.producer == "John Smith"));
-            })
-            .catch((error) => console.error(error));
-        setRefresh(false);
-    }
+    const {login, refresh} = useContext(mainContext);
+    const [ownProducts, setOwnProducts] = useState<Product[]>([]);
 
     useEffect(() => {
         if (refresh) {
-            refreshProducts()
+            fetch(SERVER_URL + "products/showall")
+                .then((response) => response.json())
+                .then((result: ProductListDto) => {
+                    console.log(result);
+                    setOwnProducts(result.products.filter(product => product.producer == login));
+                })
                 .catch((error) => console.error(error));
         }
-    }, []);
+    }, [refresh]);
 
     return (
         <div className="card col-7 me-5 p-2">
-            <OwnProductList listProducts2={ownProducts} setListProducts2={setOwnProducts}/>
-            {/*<div className="mt-3 mb-1 products-refresh" onClick={() => refreshProducts()}>*/}
-            {/*    Refresh*/}
-            {/*</div>*/}
+            <OwnProductList listProducts={ownProducts} setListProducts={setOwnProducts}/>
         </div>
     );
 }

@@ -5,7 +5,10 @@ import type {AddProductProps} from "../../../utils/Interfaces.ts";
 import {mainContext} from "../../../utils/Context.ts";
 
 function OwnProductBigCard(props: AddProductProps): ReactNode {
+
     const {value, setProduct, closeBigCard} = props;
+    const {login} = useContext(mainContext);
+
     const cardBigID = "cardBig" + value.id;
     const [newValue, setNewValue] = useState(value);
 
@@ -13,6 +16,7 @@ function OwnProductBigCard(props: AddProductProps): ReactNode {
         const res = {...newValue};
         // @ts-ignore
         res[e.target.name] = e.target.value;
+        res["producer"] = login;
         setNewValue(res);
     }
 
@@ -20,8 +24,10 @@ function OwnProductBigCard(props: AddProductProps): ReactNode {
         const res = {...newValue};
         // @ts-ignore
         res[e.target.name] = +e.target.value;
+        res["producer"] = login;
         setNewValue(res);
     }
+
 
     return (
         <div className="big-shadow" id={cardBigID} onClick={(e) => {
@@ -70,6 +76,7 @@ function OwnProductBigCard(props: AddProductProps): ReactNode {
                         Accept
                     </div>
                     {
+                        // @ts-ignore
                         props.children
                     }
                     <div className="product-own-big-take col-3" onClick={() => closeBigCard!()}>

@@ -1,7 +1,9 @@
 export interface MainContextValue {
     login: string,
     fullName: string,
-    isSeller: boolean
+    isSeller: boolean,
+    refresh: boolean,
+    setRefresh: (refresh: boolean) => void
 }
 
 export interface Product {
@@ -41,17 +43,22 @@ export interface ProductListProps {
     sortBy: string
 }
 
+export interface OwnProductListProps {
+    listProducts: Product[],
+    setListProducts: (list: Product[]) => void
+}
+
 export interface ProductCardProps {
     value: Product,
     addToCart: (n: number) => void,
-    closeBigCard: () => void;
+    closeBigCard: () => void
 }
 
 export interface AddProductProps {
     value: Product,
     setProduct: (value: Product) => void,
-    removeProduct: (value: Product) => void,
-    closeBigCard?: () => void;
+    removeProduct?: (value: Product) => void,
+    closeBigCard?: () => void
 }
 
 export interface UserProps {

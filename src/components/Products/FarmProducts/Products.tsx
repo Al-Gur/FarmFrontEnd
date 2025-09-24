@@ -1,4 +1,4 @@
-import {type ReactNode, useContext, useState} from "react";
+import {type ReactNode, useContext, useEffect, useState} from "react";
 import type {Category, ProductListDto, ProductsProps} from "../../../utils/Interfaces.ts";
 // import AllProductList from "./AllProductList.tsx";
 import ProductList from "./ProductList.tsx";
@@ -8,7 +8,7 @@ import {mainContext} from "../../../utils/Context.ts";
 
 function Products({listProducts, setListProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
 
-    const {isSeller} = useContext(mainContext);
+    const {isSeller, refresh, setRefresh} = useContext(mainContext);
 
     const [selectedCategory, setSelectedCategory] = useState("");
     const noCategories: Category[] = [];
@@ -16,46 +16,40 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
     const [maxPrice, setMaxPrice] = useState(0);
     const [sortBy, setSortBy] = useState("");
 
-    const [refresh, setRefresh] = useState(true);
 
-    const refreshProducts = async () => {
-        console.log(`category=${selectedCategory}&maxprice=${maxPrice}&sort=${sortBy}`);
-        // console.log(`isSeller=${isSeller}`);
+    useEffect(() => {
+        if (refresh) {
+            console.log(`category=${selectedCategory}&maxprice=${maxPrice}&sort=${sortBy}`);
 
-        if (selectedCategory || maxPrice || sortBy) {
-            // const requestOptions: RequestInit = {
-            //     method: "GET",
-            //     body: JSON.stringify({selectedCategory, maxPrice, sortBy})
-            // };
-
-            const query = `category=${selectedCategory}&maxprice=${maxPrice}&sort=${sortBy}`;
-            fetch(SERVER_URL + "products/show/" + query)
-                .then((response) => response.json())
-                .then(result => {
-                    console.log(result);
-                    return result;
-                })
-                .then((result: ProductListDto) => {
-                    setListProducts(result.products);
-                    setCategoryList(result.categories);
-                })
-                .catch((error) => console.error(error));
-        } else {
-            fetch(SERVER_URL + "products/showall")
-                .then((response) => response.json())
-                .then((result: ProductListDto) => {
-                    setListProducts(result.products);
-                    setCategoryList(result.categories);
-                })
-                .catch((error) => console.error(error));
+            if (selectedCategory || maxPrice || sortBy) {
+                const query = `category=${selectedCategory}&maxprice=${maxPrice}&sort=${sortBy}`;
+                fetch(SERVER_URL + "products/show/" + query)
+                    .then((response) => response.json())
+                    .then(result => {
+                        console.log(result);
+                        return result;
+                    })
+                    .then((result: ProductListDto) => {
+                        setListProducts(result.products);
+                        setCategoryList(result.categories);
+                    })
+                    .catch((error) => console.error(error));
+            } else {
+                fetch(SERVER_URL + "products/showall")
+                    .then((response) => response.json())
+                    .then(result => {
+                        console.log(result);
+                        return result;
+                    })
+                    .then((result: ProductListDto) => {
+                        setListProducts(result.products);
+                        setCategoryList(result.categories);
+                    })
+                    .catch((error) => console.error(error));
+            }
+            setRefresh(false);
         }
-        setRefresh(false);
-    }
-
-    if (refresh) {
-        refreshProducts()
-            .catch((error) => console.error(error));
-    }
+    }, [refresh]);
 
     // const refreshCategoryList = () => {
     //     setCategoryList(listProducts.map(value => value.category).sort((a,b) => a>b))
@@ -111,7 +105,7 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
 
             <ProductList listProducts={listProducts} listProducts2={listProducts2} setListProducts2={setListProducts2}
                          selectedCategory={selectedCategory} maxPrice={maxPrice ? maxPrice : 0} sortBy={sortBy}/>
-            <div className="mt-3 mb-1 products-refresh" onClick={() => refreshProducts()}>
+            <div className="mt-3 mb-1 products-refresh" onClick={() => setRefresh(true)}>
                 Refresh
             </div>
         </div>

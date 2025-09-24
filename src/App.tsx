@@ -13,6 +13,7 @@ function App() {
     const [isSeller, setIsSeller] = useState(false);
     const [allProducts, setAllProducts] = useState<Product[]>([]);
     const [takenProducts, setTakenProducts] = useState<Product[]>([]);
+    const [refresh, setRefresh] = useState(true);
     const [menuItem, setMenuItem] = useState(0);
 
     const logOut = () => {
@@ -32,7 +33,7 @@ function App() {
     }, [login]);
 
     return (
-        <mainContext.Provider value={{login, fullName, isSeller}}>
+        <mainContext.Provider value={{login, fullName, isSeller, refresh, setRefresh}}>
             <h1>Generous farm</h1>
             <Navigation menuItem={menuItem} setMenuItem={setMenuItem}/>
             {
