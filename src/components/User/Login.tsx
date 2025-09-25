@@ -11,7 +11,7 @@ function Login({setLogin, setPassword, setFullName}: SetAuthProps): ReactNode {
 
     const logIn = async () => {
         const myHeaders = new Headers();
-        myHeaders.append("Authorization", Encode(newLogin));
+        myHeaders.append("Authorization", "Basic " + Encode(newLogin));
 
         const requestOptions = {
             method: "POST",
