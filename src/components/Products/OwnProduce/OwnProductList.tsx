@@ -73,8 +73,10 @@ function OwnProductList({listProducts, setListProducts}: OwnProductListProps): R
         const myHeaders = new Headers();
         myHeaders.append("Authorization", "Basic Sm9objoxMjM=");
 
+        console.log(value)
+
         fetch(SERVER_URL + "products/productdelete/" + value.id, {
-            method: "POST",
+            method: "DELETE",
             headers: myHeaders
         })
             .then((response) => response.json())
