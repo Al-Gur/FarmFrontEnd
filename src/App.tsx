@@ -11,6 +11,7 @@ function App() {
     const [login, setLogin] = useState("");
     const [fullName, setFullName] = useState("");
     const [isSeller, setIsSeller] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
     const [allProducts, setAllProducts] = useState<Product[]>([]);
     const [takenProducts, setTakenProducts] = useState<Product[]>([]);
     const noCategories: Category[] = [];
@@ -32,11 +33,13 @@ function App() {
 
     useEffect(() => {
         setIsSeller(login == "John" || login == "Mary");
+        setIsAdmin(login == "admin");
         setRefresh(true);
     }, [login]);
 
     return (
-        <mainContext.Provider value={{login, fullName, isSeller, refresh, setRefresh, categoryList, setCategoryList}}>
+        <mainContext.Provider value={{login, fullName, isSeller, isAdmin,
+                refresh, setRefresh, categoryList, setCategoryList}}>
             <h1>Generous farm</h1>
             <Navigation menuItem={menuItem} setMenuItem={setMenuItem}/>
             {
@@ -44,6 +47,11 @@ function App() {
                     "" :
                     <div className="container-fluid ">
                         {
+                            isAdmin ?
+                                <div className="row">
+                                    <UserList/>
+                                </div>
+                                :
                             isSeller ?
                                 <div className="row">
                                     <OwnProduce/>

@@ -17,6 +17,7 @@ export interface MainContextValue {
     login: string,
     fullName: string,
     isSeller: boolean,
+    isAdmin: boolean,
     refresh: boolean,
     setRefresh: (refresh: boolean) => void,
     categoryList: Category[],
