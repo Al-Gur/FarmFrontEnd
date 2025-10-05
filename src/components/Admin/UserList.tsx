@@ -42,7 +42,8 @@ function UserList(): ReactNode {
                 <th>Login</th>
                 <th>Full name</th>
                 <th>Roles</th>
-            </tr>            {
+            </tr>
+            {
                 userList.map(user => {
                     return (
                         <tr key={user.login}>
