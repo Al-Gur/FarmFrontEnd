@@ -13,7 +13,7 @@ function UserList(): ReactNode {
         const myHeaders = new Headers();
         myHeaders.append("Authorization", "Basic " + Encode(login));
 
-        fetch(SERVER_URL + "user/showall", {headers:myHeaders})
+        fetch(SERVER_URL + "user/showall", {headers: myHeaders})
             .then(response => response.json())
             .then(result => {
                 console.log(result);
@@ -36,16 +36,13 @@ function UserList(): ReactNode {
     }
 
     return (
-        <table className="card">
-            <thead>
-            <tr>
+        <table style={{width: "100%"}} className="card">
+            <tbody>
+            <tr key="00">
                 <th>Login</th>
                 <th>Full name</th>
                 <th>Roles</th>
-            </tr>
-            </thead>
-            <tbody>
-            {
+            </tr>            {
                 userList.map(user => {
                     return (
                         <tr key={user.login}>
