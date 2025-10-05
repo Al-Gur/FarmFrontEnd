@@ -1,13 +1,19 @@
-import {type ReactNode, useEffect, useState} from "react";
+import {type ReactNode, useContext, useEffect, useState} from "react";
 import {SERVER_URL} from "../../utils/Urls.ts";
 import type {UserDto} from "../../utils/Interfaces.ts";
+import {mainContext} from "../../utils/Context.ts";
+import Encode from "../User/Encode.ts";
 
 function UserList(): ReactNode {
     const emptyList: UserDto[] = [];
     const [userList, setUserList] = useState(emptyList);
+    const {login} = useContext(mainContext);
 
     const refreshUserlist = () => {
-        fetch(SERVER_URL + "user/showall")
+        const myHeaders = new Headers();
+        myHeaders.append("Authorization", "Basic " + Encode(login));
+
+        fetch(SERVER_URL + "user/showall", {headers:myHeaders})
             .then(response => response.json())
             .then(result => {
                 console.log(result);
@@ -30,7 +36,7 @@ function UserList(): ReactNode {
     }
 
     return (
-        <table>
+        <table className="card">
             <thead>
             <tr>
                 <th>Login</th>
@@ -42,10 +48,10 @@ function UserList(): ReactNode {
             {
                 userList.map(user => {
                     return (
-                        <tr>
+                        <tr key={user.login}>
                             <td>{user.login}</td>
                             <td>{user.fullName}</td>
-                            <td>{user.roles}</td>
+                            <td>{user.roles.map(role => "[" + role + "] ")}</td>
                         </tr>
                     )
                 })
@@ -54,3 +60,5 @@ function UserList(): ReactNode {
         </table>
     )
 }
+
+export default UserList

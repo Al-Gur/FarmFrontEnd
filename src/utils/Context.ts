@@ -1,5 +1,5 @@
 import {createContext} from "react";
-import type {Category, MainContextValue} from "./Interfaces.ts";
+import type {MainContextValue} from "./Interfaces.ts";
 
 export const mainContext = createContext<MainContextValue>({
     login: "",
@@ -7,7 +7,7 @@ export const mainContext = createContext<MainContextValue>({
     isSeller: false,
     isAdmin: false,
     refresh: false,
-    setRefresh: (refresh) => {},
+    setRefresh: () => {},
     categoryList: [],
     setCategoryList: () => {}
 });
