@@ -21,11 +21,7 @@ function OwnProductBigCard(props: AddProductProps): ReactNode {
     }
 
     const changeNumbers = (e: ChangeEvent<HTMLInputElement>) => {
-        const res = {...newValue};
-        // @ts-ignore
-        res[e.target.name] = +e.target.value;
-        res["producer"] = login;
-        setNewValue(res);
+        setNewValue({...newValue, ["producer"]: login, [e.target.name]: +e.target.value});
     }
 
 
@@ -39,10 +35,9 @@ function OwnProductBigCard(props: AddProductProps): ReactNode {
                 <span className="product-big-close-button" onClick={closeBigCard}>˟</span>
                 <div className="own-product-big-image-box">
                     {
-                        value.image ?
+                        value.image &&
                             <img src={newValue.image} alt={newValue.name} className="product-big-image"/>
                             //        onClick={(e) => value.image = prompt("Enter link to the new image")}
-                            : ""
                     }
                     <label htmlFor="productImageUrl" className="m-2">Link to the product image:</label>
                     <input type="url" id="productImageUrl" name="image" value={newValue.image}

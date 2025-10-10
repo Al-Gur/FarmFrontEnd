@@ -11,11 +11,7 @@ function OwnProductCard({value, setProduct, removeProduct}: AddProductProps): Re
         <>
             <div className="product" onClick={() => setIsBigCard(true)}>
                 <div className="product-image">
-                    {
-                        value.image ?
-                            <img src={value.image} alt={value.name} className="w-75"/>
-                            : ""
-                    }
+                    {value.image && <img src={value.image} alt={value.name} className="w-75"/>}
                 </div>
                 <div className="product-name">
                     {value.name}
