@@ -71,7 +71,6 @@ function OwnProductBigCard(props: AddProductProps): ReactNode {
                         Accept
                     </div>
                     {
-                        // @ts-ignore
                         props.children
                     }
                     <div className="product-own-big-take col-3" onClick={() => closeBigCard!()}>

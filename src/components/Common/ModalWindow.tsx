@@ -2,10 +2,13 @@ import type {ReactNode} from "react";
 import {createPortal} from "react-dom";
 import "./FarmStyles.css"
 
-function ModalWindow({children}): ReactNode {
+function ModalWindow({onClose, children}): ReactNode {
     return createPortal(
         <div className="big-shadow">
-            {children}
+            <div className="card">
+                <span className="product-big-close-button" onClick={onClose}>˟</span>
+                {children}
+            </div>
         </div>, document.body
     )
 }

@@ -58,6 +58,7 @@ export interface ProductCardProps {
 }
 
 export interface AddProductProps {
+    children?: Element,
     value: Product,
     setProduct: (value: Product) => void,
     removeProduct?: (value: Product) => void,
@@ -112,3 +113,9 @@ export interface MenuProps {
 
 export const menuItems = ["Home", "About us", "Feedback", "My account", "Log out"]
 export const menuNames = ["HOME", "ABOUT", "FEEDBACK", "ACCOUNT", "LOGOUT"]
+
+
+export interface ModalProps {
+    onClose: () => void,
+    children: Element
+}

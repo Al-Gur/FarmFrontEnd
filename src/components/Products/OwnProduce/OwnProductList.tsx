@@ -97,10 +97,9 @@ function OwnProductList({listProducts, setListProducts}: OwnProductListProps): R
             </div>
             <section className="flex-container">
                 {
-                    isNewProductBigCard ?
+                    isNewProductBigCard &&
                         <OwnProductBigCard value={{...emptyValue}} setProduct={addProduct}
                                            closeBigCard={() => setIsNewProductBigCard(false)}/>
-                        : ""
                 }
                 {
                     listProducts.map((value, index) =>
