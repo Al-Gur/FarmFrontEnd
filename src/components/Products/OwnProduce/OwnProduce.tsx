@@ -6,7 +6,7 @@ import {mainContext} from "../../../utils/Context.ts";
 
 function OwnProduce(): ReactNode {
 
-    const {fullName} = useContext(mainContext);
+    const {fullName, debugParams} = useContext(mainContext);
     const [ownProducts, setOwnProducts] = useState<Product[]>([]);
     const [ownRefresh, setOwnRefresh] = useState(true);
 
@@ -15,7 +15,7 @@ function OwnProduce(): ReactNode {
             fetch(SERVER_URL + "products/showall")
                 .then((response) => response.json())
                 .then((result: ProductListDto) => {
-                    console.log(result);
+                    if (debugParams("net")) console.log(result);
                     setOwnProducts(result.products.filter(product => product.producer == fullName));
                 })
                 .catch((error) => console.error(error));

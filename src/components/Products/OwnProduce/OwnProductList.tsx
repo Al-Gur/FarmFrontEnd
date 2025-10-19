@@ -8,7 +8,7 @@ import {mainContext} from "../../../utils/Context.ts";
 
 function OwnProductList({listProducts, setListProducts}: OwnProductListProps): ReactNode {
 
-    const {fullName, setRefresh} = useContext(mainContext);
+    const {fullName, setRefresh, debugParams} = useContext(mainContext);
 
     const [isNewProductBigCard, setIsNewProductBigCard] = useState(false);
     const emptyValue: Product = {
@@ -35,7 +35,7 @@ function OwnProductList({listProducts, setListProducts}: OwnProductListProps): R
         })
             .then((response) => response.json())
             .then(result => {
-                console.log(result);
+                if (debugParams("net")) console.log(result);
                 setRefresh(true);
                 return result;
             })
@@ -60,7 +60,7 @@ function OwnProductList({listProducts, setListProducts}: OwnProductListProps): R
         })
             .then((response) => response.json())
             .then(result => {
-                console.log(result);
+                if (debugParams("net")) console.log(result);
                 setRefresh(true);
                 return result;
             })
@@ -81,7 +81,7 @@ function OwnProductList({listProducts, setListProducts}: OwnProductListProps): R
         })
             .then((response) => response.json())
             .then(result => {
-                console.log(result);
+                if (debugParams("net")) console.log(result);
                 setRefresh(true);
                 return result;
             })
@@ -103,7 +103,7 @@ function OwnProductList({listProducts, setListProducts}: OwnProductListProps): R
                 }
                 {
                     listProducts.map((value, index) =>
-                        <OwnProductCard key={index} value={{...value}}
+                        <OwnProductCard key={value.id + index} value={{...value}}
                                         setProduct={updateProduct(index)}
                                         removeProduct={removeProduct}
                         />

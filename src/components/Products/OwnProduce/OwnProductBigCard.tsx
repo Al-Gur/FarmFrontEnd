@@ -21,7 +21,7 @@ function OwnProductBigCard(props: AddProductProps): ReactNode {
     }
 
     const changeNumbers = (e: ChangeEvent<HTMLInputElement>) => {
-        setNewValue({...newValue, ["producer"]: login, [e.target.name]: +e.target.value});
+        setNewValue({...newValue, producer: login, [e.target.name]: +e.target.value});
     }
 
 

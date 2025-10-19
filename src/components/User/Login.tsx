@@ -4,7 +4,7 @@ import Register from "./Register.tsx";
 import {createPortal} from "react-dom";
 import Encode from "./Encode.ts";
 
-function Login({setLogin, setPassword, setFullName}: SetAuthProps): ReactNode {
+function Login({setLogin, setPassword, setFullName, setIsSeller, setIsAdmin}: SetAuthProps): ReactNode {
     const [registration, setRegistration] = useState(false);
     const [newLogin, setNewLogin] = useState("");
     const [newPassword, setNewPassword] = useState("");
@@ -28,6 +28,8 @@ function Login({setLogin, setPassword, setFullName}: SetAuthProps): ReactNode {
 //                setLogin(result.login)
 
                 setFullName(result.fullName);
+                setIsSeller(result.roles.includes("SELLER"));
+                setIsAdmin(result.roles.includes("ADMINISTRATOR"));
             })
             .catch((error) => console.error(error));
     }

@@ -45,13 +45,8 @@ function OwnProductCard({value, setProduct, removeProduct}: AddProductProps): Re
                     <div>
                         Are you sure to remove product {value.name} from database?
                         <div className="flex-container">
-                            <div className="card" onClick={() => {
-                                removeProduct!(value);
-                                closeModal();
-                            }}>
-                                Yes
-                            </div>
-                            <div className="card" onClick={closeModal}>No</div>
+                            <button onClick={() => { removeProduct!(value); closeModal(); }}> Yes </button>
+                            <button onClick={closeModal}> No </button>
                         </div>
                     </div>
                     {

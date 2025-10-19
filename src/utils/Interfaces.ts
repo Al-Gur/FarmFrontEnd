@@ -21,7 +21,8 @@ export interface MainContextValue {
     refresh: boolean,
     setRefresh: (refresh: boolean) => void,
     categoryList: Category[],
-    setCategoryList: (categoryList: Category[]) => void
+    setCategoryList: (categoryList: Category[]) => void,
+    debugParams: (params: string) => boolean
 }
 
 export interface ProductListDto {
@@ -58,7 +59,7 @@ export interface ProductCardProps {
 }
 
 export interface AddProductProps {
-    children?: Element,
+    children?: ReactNode,
     value: Product,
     setProduct: (value: Product) => void,
     removeProduct?: (value: Product) => void,
@@ -72,7 +73,9 @@ export interface UserProps {
     listProducts: Product[],
     setListProducts: (list: Product[]) => void
     listProducts2: Product[],
-    setListProducts2: (list: Product[]) => void
+    setListProducts2: (list: Product[]) => void,
+    setIsSeller: (isSeller: boolean) => void,
+    setIsAdmin: (isAdmin: boolean) => void
 }
 
 export interface LoggedProps {
@@ -89,7 +92,9 @@ export interface LoggedProps {
 export interface SetAuthProps {
     setLogin: (login: string) => void,
     setPassword: (password: string) => void
-    setFullName: (fullName: string) => void
+    setFullName: (fullName: string) => void,
+    setIsSeller: (isSeller: boolean) => void,
+    setIsAdmin: (isAdmin: boolean) => void
 }
 
 
@@ -103,6 +108,11 @@ export interface UserDto {
     login: string,
     fullName: string,
     roles: string[]
+}
+
+export interface OneUserProps {
+    user: UserDto,
+    refreshUserlist: () => void
 }
 
 
