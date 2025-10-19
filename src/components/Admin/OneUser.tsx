@@ -44,7 +44,7 @@ function OneUser({user, refreshUserlist}: OneUserProps): ReactNode {
         console.log(role);
         console.log(oldRole)
         fetch(url, {
-            method: (add ? "POST" : "DELETE"),
+            method: (add ? "PUT" : "DELETE"),
             headers: myHeaders
         })
             .then((response) => response.json())
