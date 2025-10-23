@@ -1,14 +1,18 @@
-import {type ReactNode, useContext, useState} from "react";
-import type {OneUserProps, UserDto} from "../../utils/Interfaces.ts";
+import {type ReactNode, type Ref, useContext, useRef, useState} from "react";
+import type {OneUserProps} from "../../utils/Interfaces.ts";
 import ModalWindow from "../Common/ModalWindow.tsx";
 import {SERVER_URL} from "../../utils/Urls.ts";
 import Encode from "../User/Encode.ts";
 import {mainContext} from "../../utils/Context.ts";
 
 function OneUser({user, refreshUserlist}: OneUserProps): ReactNode {
+    const newRoleRef: Ref<HTMLSelectElement> = useRef(null);
+    const oldRoleRef: Ref<HTMLSelectElement> = useRef(null);
+
     const {login, debugParams} = useContext(mainContext);
 
     const [newRole, setNewRole] = useState("");
+    const [newRole2, setNewRole2] = useState("");
     const [oldRole, setOldRole] = useState("");
     const [editing, setEditing] = useState(false);
     const [deleting, setDeleting] = useState(false);
@@ -26,23 +30,21 @@ function OneUser({user, refreshUserlist}: OneUserProps): ReactNode {
             .then((response) => response.json())
             .then(result => {
                 if (debugParams("net")) console.log(result);
+                refreshUserlist();
                 return result;
             })
             .catch((error) => console.error(error));
 
         closeModal();
-        refreshUserlist();
     }
 
 
-    const changeRole = (role:string, add: true) => {
+    const changeRole = (role:string, add: boolean) => {
         const myHeaders = new Headers();
         myHeaders.append("Authorization", "Basic " + Encode(login));
 
         const url = SERVER_URL + `user/${(add ? "addrole" : "removerole")}/${user.login}/${role}`;
-        console.log(url);
-        console.log(role);
-        console.log(oldRole)
+        if (debugParams("net")) console.log(url);
         fetch(url, {
             method: (add ? "PUT" : "DELETE"),
             headers: myHeaders
@@ -50,6 +52,7 @@ function OneUser({user, refreshUserlist}: OneUserProps): ReactNode {
             .then((response) => response.json())
             .then(result => {
                 if (debugParams("net")) console.log(result);
+                refreshUserlist();
                 return result;
             })
             .catch((error) => console.error(error));
@@ -78,22 +81,42 @@ function OneUser({user, refreshUserlist}: OneUserProps): ReactNode {
                     </button>
 
                     <label className="m-2">New role:
-                    <select name="NewRole" value={newRole}
+                    <select name="NewRole" value={newRole} ref={newRoleRef}
                             onChange={e => setNewRole(e.target.value)}>
                         <option value="SELLER">SELLER</option>
                         <option value="ADMINISTRATOR">ADMINISTRATOR</option>
+                        <option value=".">Another role...</option>
                     </select>
                     </label>
-                    <button onClick={() => changeRole(newRole, true)}>Add role</button>
+                    {
+                        newRole == '.' &&
+                        <label className="m-2">Enter new role:
+                            <input type="text" value={newRole2} onChange={e => setNewRole2(e.target.value)}/>
+                        </label>
+                    }
+                    <button onClick={() => {
+                        let addingRole = newRole || newRoleRef.current!.value;
+                        if (addingRole == '.') {
+                            addingRole = newRole2;
+                        }
+                        if (addingRole) {
+                            changeRole(addingRole, true);
+                        }
+                    }}>
+                        Add role
+                    </button>
 
                     <label htmlFor="OldRole" className="m-2">Existing role:</label>
-                    <select id="OldRole" name="OldRole" value={oldRole}
+                    <select name="OldRole" value={oldRole} ref={oldRoleRef}
                             onChange={e => setOldRole(e.target.value)}>
                         {
                             user.roles.map(role => <option value={role} key={role}>{role}</option>)
                         }
                     </select>
-                    <button onClick={() => changeRole(oldRole, false)}>Remove role</button>
+                    <button onClick={
+                        () => changeRole(oldRoleRef.current!.value, false)}>
+                        Remove role
+                    </button>
 
                     <button onClick={closeModal}>Cancel</button>
                 </ModalWindow>

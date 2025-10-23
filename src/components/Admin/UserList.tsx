@@ -6,9 +6,10 @@ import Encode from "../User/Encode.ts";
 import OneUser from "./OneUser.tsx";
 
 function UserList(): ReactNode {
+    const {login, debugParams} = useContext(mainContext);
+
     const emptyList: UserDto[] = [];
     const [userList, setUserList] = useState(emptyList);
-    const {login, debugParams} = useContext(mainContext);
 
     const refreshUserlist = () => {
         const myHeaders = new Headers();
@@ -25,8 +26,9 @@ function UserList(): ReactNode {
     }
 
     useEffect(() => {
-        refreshUserlist();
-    }, []);
+        login &&
+         refreshUserlist();
+    }, [login]);
 
 
     return (
