@@ -8,7 +8,8 @@ import {mainContext} from "../../../utils/Context.ts";
 
 function Products({listProducts, setListProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
 
-    const {isSeller, refresh, setRefresh, categoryList, setCategoryList, debugParams} = useContext(mainContext);
+    const {isSeller, refresh, setRefresh, refreshRef, categoryList, setCategoryList, debugParams} =
+        useContext(mainContext);
 
     const [selectedCategory, setSelectedCategory] = useState("");
     const [maxPrice, setMaxPrice] = useState(0);
@@ -17,7 +18,7 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
 
     useEffect(() => {
         if (debugParams("refresh")) console.log(`refresh=${refresh}`)
-        if (refresh) {
+        if (refresh && refreshRef!.current) {
             console.log(`category=${selectedCategory}&maxprice=${maxPrice}&sort=${sortBy}`);
 
             if (selectedCategory || maxPrice || sortBy) {
@@ -46,8 +47,9 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
                     })
                     .catch((error) => console.error(error));
             }
-            if (debugParams("refresh")) console.log("setfalse1")
+            if (debugParams("refresh")) console.log("setfalse1");
             setRefresh(false);
+            refreshRef!.current = false;
             if (debugParams("refresh")) console.log("setfalse2")
         }
     }, [refresh]);

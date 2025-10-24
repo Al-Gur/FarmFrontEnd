@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import './App.css'
 import CurrentUser from "./components/User/CurrentUser.tsx";
 import {type Category, menuNames, type Product} from "./utils/Interfaces.ts";
@@ -22,6 +22,7 @@ function App() {
     const noCategories: Category[] = [];
     const [categoryList, setCategoryList] = useState(noCategories);
     const [refresh, setRefresh] = useState(false); // useEffect[login] will make it true
+    const refreshRef = useRef(false);
     const [menuItem, setMenuItem] = useState(0);
 
     // const setRefresh = (r:boolean) => {
@@ -49,12 +50,14 @@ function App() {
             setTakenProducts([]);
         }
         setRefresh(true);
+        refreshRef.current = true;
     }, [login]);
 
     return (
         <mainContext.Provider value={{
             login, fullName, isSeller, isAdmin,
-            refresh, setRefresh, categoryList, setCategoryList, debugParams
+            refresh, setRefresh, refreshRef,
+            categoryList, setCategoryList, debugParams
         }}>
             <h1>Generous farm</h1>
             <Navigation menuItem={menuItem} setMenuItem={setMenuItem}/>
