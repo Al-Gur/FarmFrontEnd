@@ -1,4 +1,4 @@
-import {type ReactNode} from "react";
+import {type ReactNode, useContext} from "react";
 import type {Product, ProductsProps} from "../../../utils/Interfaces.ts";
 import ProductList from "../FarmProducts/ProductList.tsx";
 import {mainContext} from "../../../utils/Context.ts";

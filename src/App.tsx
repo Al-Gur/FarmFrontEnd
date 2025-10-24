@@ -52,19 +52,21 @@ function App() {
     }, [login]);
 
     return (
-        <mainContext.Provider value={{login, fullName, isSeller, isAdmin,
-                refresh, setRefresh, categoryList, setCategoryList, debugParams}}>
+        <mainContext.Provider value={{
+            login, fullName, isSeller, isAdmin,
+            refresh, setRefresh, categoryList, setCategoryList, debugParams
+        }}>
             <h1>Generous farm</h1>
             <Navigation menuItem={menuItem} setMenuItem={setMenuItem}/>
             {
                 menuNames[menuItem] != "ABOUT" &&
-                    <div className="container-fluid ">
-                        {
-                            isAdmin ?
-                                <div className="row">
-                                    <UserList/>
-                                </div>
-                                :
+                <div className="container-fluid ">
+                    {
+                        isAdmin ?
+                            <div className="row">
+                                <UserList/>
+                            </div>
+                            :
                             isSeller ?
                                 <div className="row">
                                     <OwnProduce/>
@@ -81,8 +83,8 @@ function App() {
                                                  setIsSeller={setIsSeller} setIsAdmin={setIsAdmin}
                                     />
                                 </div>
-                        }
-                    </div>
+                    }
+                </div>
             }
         </mainContext.Provider>
     )

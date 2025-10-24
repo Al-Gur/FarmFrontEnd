@@ -13,7 +13,6 @@ function OneUser({user, refreshUserlist}: OneUserProps): ReactNode {
 
     const [newRole, setNewRole] = useState("");
     const [newRole2, setNewRole2] = useState("");
-    const [oldRole, setOldRole] = useState("");
     const [editing, setEditing] = useState(false);
     const [deleting, setDeleting] = useState(false);
 
@@ -107,8 +106,7 @@ function OneUser({user, refreshUserlist}: OneUserProps): ReactNode {
                     </button>
 
                     <label htmlFor="OldRole" className="m-2">Existing role:</label>
-                    <select name="OldRole" value={oldRole} ref={oldRoleRef}
-                            onChange={e => setOldRole(e.target.value)}>
+                    <select name="OldRole" ref={oldRoleRef}>
                         {
                             user.roles.map(role => <option value={role} key={role}>{role}</option>)
                         }
