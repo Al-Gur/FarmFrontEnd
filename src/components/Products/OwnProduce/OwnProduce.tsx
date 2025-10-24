@@ -3,10 +3,11 @@ import type {Product, ProductListDto} from "../../../utils/Interfaces.ts";
 import OwnProductList from "./OwnProductList.tsx";
 import {SERVER_URL} from "../../../utils/Urls.ts";
 import {mainContext} from "../../../utils/Context.ts";
+import debugg from "../../../utils/Debugg.ts";
 
 function OwnProduce(): ReactNode {
 
-    const {fullName, debugParams} = useContext(mainContext);
+    const {fullName} = useContext(mainContext);
     const [ownProducts, setOwnProducts] = useState<Product[]>([]);
     const [ownRefresh, setOwnRefresh] = useState(true);
 
@@ -15,7 +16,7 @@ function OwnProduce(): ReactNode {
             fetch(SERVER_URL + "products/showall")
                 .then((response) => response.json())
                 .then((result: ProductListDto) => {
-                    if (debugParams("net")) console.log(result);
+                    debugg("net", result);
                     setOwnProducts(result.products.filter(product => product.producer == fullName));
                 })
                 .catch((error) => console.error(error));

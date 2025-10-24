@@ -23,8 +23,7 @@ export interface MainContextValue {
     getRefresh: () => boolean,
     setRefresh: (refresh: boolean) => void,
     categoryList: Category[],
-    setCategoryList: (categoryList: Category[]) => void,
-    debugParams: (params: string) => boolean
+    setCategoryList: (categoryList: Category[]) => void
 }
 
 export interface ProductListDto {

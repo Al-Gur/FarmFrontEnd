@@ -9,6 +9,5 @@ export const mainContext = createContext<MainContextValue>({
     getRefresh: () => false,
     setRefresh: () => {},
     categoryList: [],
-    setCategoryList: () => {},
-    debugParams: () => false
+    setCategoryList: () => {}
 });

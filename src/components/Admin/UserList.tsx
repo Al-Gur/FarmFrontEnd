@@ -4,9 +4,10 @@ import type {UserDto} from "../../utils/Interfaces.ts";
 import {mainContext} from "../../utils/Context.ts";
 import Encode from "../User/Encode.ts";
 import OneUser from "./OneUser.tsx";
+import debugg from "../../utils/Debugg.ts";
 
 function UserList(): ReactNode {
-    const {login, debugParams} = useContext(mainContext);
+    const {login} = useContext(mainContext);
 
     const emptyList: UserDto[] = [];
     const [userList, setUserList] = useState(emptyList);
@@ -18,7 +19,7 @@ function UserList(): ReactNode {
         fetch(SERVER_URL + "user/showall", {headers: myHeaders})
             .then(response => response.json())
             .then(result => {
-                if (debugParams("net")) console.log(result);
+                debugg("net", result);
                 return result;
             })
             .then(result => setUserList(result))

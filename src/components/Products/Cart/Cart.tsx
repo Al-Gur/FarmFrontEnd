@@ -1,12 +1,10 @@
-import {type ReactNode, useContext} from "react";
+import {type ReactNode} from "react";
 import type {Product, ProductsProps} from "../../../utils/Interfaces.ts";
 import ProductList from "../FarmProducts/ProductList.tsx";
-import {mainContext} from "../../../utils/Context.ts";
+import debugg from "../../../utils/Debugg.ts";
 
 
 function Cart({listProducts, setListProducts}: ProductsProps): ReactNode {
-
-    const {debugParams} = useContext(mainContext);
 
     const refreshProducts = async () => {
         const requestOptions = {
@@ -20,7 +18,7 @@ function Cart({listProducts, setListProducts}: ProductsProps): ReactNode {
                 return response.json();
             })
             .then(result => {
-                if (debugParams("net")) console.log(result);
+                debugg("net", result);
                 return result;
             })
             .then((result: Product[]) => setListProducts(result))

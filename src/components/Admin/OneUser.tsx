@@ -4,12 +4,13 @@ import ModalWindow from "../Common/ModalWindow.tsx";
 import {SERVER_URL} from "../../utils/Urls.ts";
 import Encode from "../User/Encode.ts";
 import {mainContext} from "../../utils/Context.ts";
+import debugg from "../../utils/Debugg.ts";
 
 function OneUser({user, refreshUserlist}: OneUserProps): ReactNode {
     const newRoleRef: Ref<HTMLSelectElement> = useRef(null);
     const oldRoleRef: Ref<HTMLSelectElement> = useRef(null);
 
-    const {login, debugParams} = useContext(mainContext);
+    const {login} = useContext(mainContext);
 
     const [newRole, setNewRole] = useState("");
     const [newRole2, setNewRole2] = useState("");
@@ -28,7 +29,7 @@ function OneUser({user, refreshUserlist}: OneUserProps): ReactNode {
         })
             .then((response) => response.json())
             .then(result => {
-                if (debugParams("net")) console.log(result);
+                debugg("net", result);
                 refreshUserlist();
                 return result;
             })
@@ -43,14 +44,14 @@ function OneUser({user, refreshUserlist}: OneUserProps): ReactNode {
         myHeaders.append("Authorization", "Basic " + Encode(login));
 
         const url = SERVER_URL + `user/${(add ? "addrole" : "removerole")}/${user.login}/${role}`;
-        if (debugParams("net")) console.log(url);
+        debugg("net", url);
         fetch(url, {
             method: (add ? "PUT" : "DELETE"),
             headers: myHeaders
         })
             .then((response) => response.json())
             .then(result => {
-                if (debugParams("net")) console.log(result);
+                debugg("net", result);
                 refreshUserlist();
                 return result;
             })

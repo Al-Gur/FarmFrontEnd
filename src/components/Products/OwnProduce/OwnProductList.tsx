@@ -5,10 +5,11 @@ import OwnProductCard from "./OwnProductCard.tsx";
 import OwnProductBigCard from "./OwnProductBigCard.tsx";
 import {SERVER_URL} from "../../../utils/Urls.ts";
 import {mainContext} from "../../../utils/Context.ts";
+import debugg from "../../../utils/Debugg.ts";
 
 function OwnProductList({listProducts, setListProducts}: OwnProductListProps): ReactNode {
 
-    const {fullName, setRefresh, debugParams} = useContext(mainContext);
+    const {fullName, setRefresh} = useContext(mainContext);
 
     const [isNewProductBigCard, setIsNewProductBigCard] = useState(false);
     const emptyValue: Product = {
@@ -35,7 +36,7 @@ function OwnProductList({listProducts, setListProducts}: OwnProductListProps): R
         })
             .then((response) => response.json())
             .then(result => {
-                if (debugParams("net")) console.log(result);
+                debugg("net", result);
                 setRefresh(true);
                 return result;
             })
@@ -60,7 +61,7 @@ function OwnProductList({listProducts, setListProducts}: OwnProductListProps): R
         })
             .then((response) => response.json())
             .then(result => {
-                if (debugParams("net")) console.log(result);
+                debugg("net", result);
                 setRefresh(true);
                 return result;
             })
@@ -81,7 +82,7 @@ function OwnProductList({listProducts, setListProducts}: OwnProductListProps): R
         })
             .then((response) => response.json())
             .then(result => {
-                if (debugParams("net")) console.log(result);
+                debugg("net", result);
                 setRefresh(true);
                 return result;
             })

@@ -8,9 +8,6 @@ import Navigation from "./components/Menus/Navigation.tsx"
 import OwnProduce from "./components/Products/OwnProduce/OwnProduce.tsx";
 import UserList from "./components/Admin/UserList.tsx";
 
-const debugParams = (params: string) => {
-    return params.includes("net");
-};
 
 function App() {
     const [login, setLogin] = useState("");
@@ -59,8 +56,7 @@ function App() {
 
     return (
         <mainContext.Provider value={{
-            login, fullName, isSeller, isAdmin, getRefresh, setRefresh,
-            categoryList, setCategoryList, debugParams
+            login, fullName, isSeller, isAdmin, getRefresh, setRefresh, categoryList, setCategoryList
         }}>
             <h1>Generous farm</h1>
             <Navigation menuItem={menuItem} setMenuItem={setMenuItem}/>

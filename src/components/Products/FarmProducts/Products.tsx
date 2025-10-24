@@ -5,11 +5,11 @@ import ProductList from "./ProductList.tsx";
 import "./Products.css"
 import {SERVER_URL} from "../../../utils/Urls.ts";
 import {mainContext} from "../../../utils/Context.ts";
+import debugg from "../../../utils/Debugg.ts";
 
 function Products({listProducts, setListProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
 
-    const {isSeller, getRefresh, setRefresh, categoryList, setCategoryList, debugParams} =
-        useContext(mainContext);
+    const {isSeller, getRefresh, setRefresh, categoryList, setCategoryList} = useContext(mainContext);
 
     const [selectedCategory, setSelectedCategory] = useState("");
     const [maxPrice, setMaxPrice] = useState(0);
@@ -17,7 +17,7 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
 
 
     useEffect(() => {
-        if (debugParams("refresh")) console.log(`refresh=${getRefresh()}`)
+        debugg("refresh",`refresh=${getRefresh()}`)
         if (getRefresh()) {
             console.log(`category=${selectedCategory}&maxprice=${maxPrice}&sort=${sortBy}`);
 
@@ -26,7 +26,7 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
                 fetch(SERVER_URL + "products/show/" + query)
                     .then((response) => response.json())
                     .then(result => {
-                        if (debugParams("net")) console.log(result);
+                        debugg("net", result);
                         return result;
                     })
                     .then((result: ProductListDto) => {
@@ -38,7 +38,7 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
                 fetch(SERVER_URL + "products/showall")
                     .then((response) => response.json())
                     .then(result => {
-                        if (debugParams("net")) console.log(result);
+                        debugg("net", result);
                         return result;
                     })
                     .then((result: ProductListDto) => {
@@ -47,9 +47,9 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
                     })
                     .catch((error) => console.error(error));
             }
-            if (debugParams("refresh")) console.log("setfalse1");
+            debugg("refresh","setfalse1");
             setRefresh(false);
-            if (debugParams("refresh")) console.log("setfalse2")
+            debugg("refresh","setfalse2")
         }
     });
 
