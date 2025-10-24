@@ -1,4 +1,4 @@
-import type {ReactNode, RefObject} from "react";
+import type {ReactNode} from "react";
 
 export interface Product {
     id: string,
@@ -20,9 +20,8 @@ export interface MainContextValue {
     fullName: string,
     isSeller: boolean,
     isAdmin: boolean,
-    refresh: boolean,
+    getRefresh: () => boolean,
     setRefresh: (refresh: boolean) => void,
-    refreshRef?: RefObject<boolean>,
     categoryList: Category[],
     setCategoryList: (categoryList: Category[]) => void,
     debugParams: (params: string) => boolean

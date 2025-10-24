@@ -3,8 +3,7 @@ import type {Product, ProductListProps} from "../../../utils/Interfaces.ts";
 import './ProductList.css'
 import ProductCard from "./ProductCard.tsx";
 
-function ProductList({listProducts, listProducts2, setListProducts2,
-                         selectedCategory, maxPrice, sortBy}: ProductListProps): ReactNode {
+function ProductList({listProducts, listProducts2, setListProducts2}: ProductListProps): ReactNode {
 
     const remaining = (product: Product) => {
         if (listProducts2) {

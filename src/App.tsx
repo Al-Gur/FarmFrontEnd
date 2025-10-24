@@ -21,15 +21,19 @@ function App() {
     const [takenProducts, setTakenProducts] = useState<Product[]>([]);
     const noCategories: Category[] = [];
     const [categoryList, setCategoryList] = useState(noCategories);
-    const [refresh, setRefresh] = useState(false); // useEffect[login] will make it true
+    const [refreshState, setRefreshState] = useState(false); // useEffect[login] will make it true
     const refreshRef = useRef(false);
     const [menuItem, setMenuItem] = useState(0);
 
-    // const setRefresh = (r:boolean) => {
+    const setRefresh = (r:boolean) => {
     //     console.log(`Old refresh=${refresh} New value=${r}`);
-    //     set0Refresh(r);
+        refreshRef.current = r;
+        setRefreshState(r);
     //   //  console.log(`Now refresh=${refresh}`);
-    // }
+    }
+
+    const getRefresh = () => refreshState && refreshRef.current
+
 
     const logOut = () => {
         setLogin("");
@@ -49,14 +53,13 @@ function App() {
             setIsAdmin(false);
             setTakenProducts([]);
         }
-        setRefresh(true);
+        setRefreshState(true);
         refreshRef.current = true;
     }, [login]);
 
     return (
         <mainContext.Provider value={{
-            login, fullName, isSeller, isAdmin,
-            refresh, setRefresh, refreshRef,
+            login, fullName, isSeller, isAdmin, getRefresh, setRefresh,
             categoryList, setCategoryList, debugParams
         }}>
             <h1>Generous farm</h1>
@@ -94,3 +97,4 @@ function App() {
 }
 
 export default App
+

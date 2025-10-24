@@ -6,7 +6,7 @@ export const mainContext = createContext<MainContextValue>({
     fullName: "",
     isSeller: false,
     isAdmin: false,
-    refresh: false,
+    getRefresh: () => false,
     setRefresh: () => {},
     categoryList: [],
     setCategoryList: () => {},
