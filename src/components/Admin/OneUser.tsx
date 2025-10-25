@@ -4,7 +4,7 @@ import ModalWindow from "../Common/ModalWindow.tsx";
 import {SERVER_URL} from "../../utils/Urls.ts";
 import Encode from "../User/Encode.ts";
 import {mainContext} from "../../utils/Context.ts";
-import debugg from "../../utils/Debugg.ts";
+import check from "../../utils/Check.ts";
 
 function OneUser({user, refreshUserlist}: OneUserProps): ReactNode {
     const newRoleRef: Ref<HTMLSelectElement> = useRef(null);
@@ -29,7 +29,7 @@ function OneUser({user, refreshUserlist}: OneUserProps): ReactNode {
         })
             .then((response) => response.json())
             .then(result => {
-                debugg("net", result);
+                check("net", result);
                 refreshUserlist();
                 return result;
             })
@@ -44,14 +44,14 @@ function OneUser({user, refreshUserlist}: OneUserProps): ReactNode {
         myHeaders.append("Authorization", "Basic " + Encode(login));
 
         const url = SERVER_URL + `user/${(add ? "addrole" : "removerole")}/${user.login}/${role}`;
-        debugg("net", url);
+        check("net", url);
         fetch(url, {
             method: (add ? "PUT" : "DELETE"),
             headers: myHeaders
         })
             .then((response) => response.json())
             .then(result => {
-                debugg("net", result);
+                check("net", result);
                 refreshUserlist();
                 return result;
             })

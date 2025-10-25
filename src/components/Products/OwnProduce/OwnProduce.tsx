@@ -3,7 +3,7 @@ import type {Product, ProductListDto} from "../../../utils/Interfaces.ts";
 import OwnProductList from "./OwnProductList.tsx";
 import {SERVER_URL} from "../../../utils/Urls.ts";
 import {mainContext} from "../../../utils/Context.ts";
-import debugg from "../../../utils/Debugg.ts";
+import check from "../../../utils/Check.ts";
 
 function OwnProduce(): ReactNode {
 
@@ -16,7 +16,7 @@ function OwnProduce(): ReactNode {
             fetch(SERVER_URL + "products/showall")
                 .then((response) => response.json())
                 .then((result: ProductListDto) => {
-                    debugg("net", result);
+                    check("net", result);
                     setOwnProducts(result.products.filter(product => product.producer == fullName));
                 })
                 .catch((error) => console.error(error));

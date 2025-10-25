@@ -5,7 +5,7 @@ import ProductList from "./ProductList.tsx";
 import "./Products.css"
 import {SERVER_URL} from "../../../utils/Urls.ts";
 import {mainContext} from "../../../utils/Context.ts";
-import debugg from "../../../utils/Debugg.ts";
+import check from "../../../utils/Check.ts";
 
 function Products({listProducts, setListProducts, listProducts2, setListProducts2}: ProductsProps): ReactNode {
 
@@ -17,16 +17,16 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
 
 
     useEffect(() => {
-        debugg("refresh",`refresh=${getRefresh()}`)
+        check(`refresh/refresh=${getRefresh()}`)
         if (getRefresh()) {
-            console.log(`category=${selectedCategory}&maxprice=${maxPrice}&sort=${sortBy}`);
+            check(`net/Category=${selectedCategory}&maxprice=${maxPrice}&sort=${sortBy}`);
 
             if (selectedCategory || maxPrice || sortBy) {
                 const query = `category=${selectedCategory}&maxprice=${maxPrice}&sort=${sortBy}`;
                 fetch(SERVER_URL + "products/show/" + query)
                     .then((response) => response.json())
                     .then(result => {
-                        debugg("net", result);
+                        check("net", result);
                         return result;
                     })
                     .then((result: ProductListDto) => {
@@ -38,7 +38,7 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
                 fetch(SERVER_URL + "products/showall")
                     .then((response) => response.json())
                     .then(result => {
-                        debugg("net", result);
+                        check("net", result);
                         return result;
                     })
                     .then((result: ProductListDto) => {
@@ -47,9 +47,9 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
                     })
                     .catch((error) => console.error(error));
             }
-            debugg("refresh","setfalse1");
+            check("refresh","setfalse1");
             setRefresh(false);
-            debugg("refresh","setfalse2")
+            check("refresh","setfalse2")
         }
     });
 

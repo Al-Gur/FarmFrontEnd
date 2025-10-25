@@ -1,7 +1,7 @@
 import {type ReactNode} from "react";
 import type {Product, ProductsProps} from "../../../utils/Interfaces.ts";
 import ProductList from "../FarmProducts/ProductList.tsx";
-import debugg from "../../../utils/Debugg.ts";
+import check from "../../../utils/Check.ts";
 
 
 function Cart({listProducts, setListProducts}: ProductsProps): ReactNode {
@@ -18,7 +18,7 @@ function Cart({listProducts, setListProducts}: ProductsProps): ReactNode {
                 return response.json();
             })
             .then(result => {
-                debugg("net", result);
+                check("net", result);
                 return result;
             })
             .then((result: Product[]) => setListProducts(result))
