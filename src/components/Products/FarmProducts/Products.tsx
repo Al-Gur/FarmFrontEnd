@@ -47,7 +47,7 @@ function Products({listProducts, setListProducts, listProducts2, setListProducts
                     })
                     .catch((error) => console.error(error));
             }
-            check("refresh","setfalse1");
+            check("refresh/setfalse1");
             setRefresh(false);
             check("refresh","setfalse2")
         }

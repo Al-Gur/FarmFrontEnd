@@ -5,7 +5,14 @@ function check(params: string, ...value: any[]): boolean {
         message = params.slice(n + 1);
         params = params.slice(0, n);
     }
-    if (params.includes("net") || params.includes("refresh")) {
+
+    // ************* Condition **********************************
+
+    const checkCondition = params.includes("net");
+
+    // **********************************************************
+
+    if (checkCondition) {
         if (message) {
             console.log(message);
         }
@@ -14,10 +21,8 @@ function check(params: string, ...value: any[]): boolean {
         if (!message && !value.length) {
             console.log("CHECK");
         }
-        return true;
-    } else {
-        return false;
     }
+    return checkCondition;
 }
 
 export default check
