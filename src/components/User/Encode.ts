@@ -1,4 +1,5 @@
 function Encode(login: string): string {
+    //btoa("John:"+psw)
     switch(login) {
         case "John": return "Sm9objoxMjM=";
         case "Mary": return "TWFyeToxMjQ=";

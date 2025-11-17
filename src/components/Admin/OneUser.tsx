@@ -6,11 +6,9 @@ import Encode from "../User/Encode.ts";
 import {mainContext} from "../../utils/Context.ts";
 import check from "../../utils/Check.ts";
 
-function OneUser({user, refreshUserlist}: OneUserProps): ReactNode {
+function OneUser({user, refreshUserlist, authString}: OneUserProps): ReactNode {
     const newRoleRef: Ref<HTMLSelectElement> = useRef(null);
     const oldRoleRef: Ref<HTMLSelectElement> = useRef(null);
-
-    const {login} = useContext(mainContext);
 
     const [newRole, setNewRole] = useState("");
     const [newRole2, setNewRole2] = useState("");
@@ -21,7 +19,7 @@ function OneUser({user, refreshUserlist}: OneUserProps): ReactNode {
 
     const deleteUser = () => {
         const myHeaders = new Headers();
-        myHeaders.append("Authorization", "Basic " + Encode(login));
+        myHeaders.append("Authorization", authString);
 
         fetch(SERVER_URL + `user/delete/${user.login}`, {
             method: "DELETE",
@@ -41,7 +39,7 @@ function OneUser({user, refreshUserlist}: OneUserProps): ReactNode {
 
     const changeRole = (role:string, add: boolean) => {
         const myHeaders = new Headers();
-        myHeaders.append("Authorization", "Basic " + Encode(login));
+        myHeaders.append("Authorization", authString);
 
         const url = SERVER_URL + `user/${(add ? "addrole" : "removerole")}/${user.login}/${role}`;
         check("net", url);

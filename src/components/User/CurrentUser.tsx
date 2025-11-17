@@ -1,4 +1,4 @@
-import {type ReactNode, useEffect, useState} from "react";
+import {type ReactNode, useEffect} from "react";
 import type {UserProps} from "../../utils/Interfaces.ts";
 import Logged from "./Logged.tsx";
 import Login from "./Login.tsx";
@@ -6,11 +6,10 @@ import './CurrentUser.css'
 
 
 function CurrentUser({
-                         login, setLogin, setFullName,
+                         login, setLogin, password, setPassword, setFullName,
                          listProducts, setListProducts, listProducts2, setListProducts2,
                          setIsSeller, setIsAdmin
                      }: UserProps): ReactNode {
-    const [password, setPassword] = useState(``);
 
     useEffect(() => {
         if (!login && password) {

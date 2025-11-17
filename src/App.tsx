@@ -11,6 +11,7 @@ import UserList from "./components/Admin/UserList.tsx";
 
 function App() {
     const [login, setLogin] = useState("");
+    const [password, setPassword] = useState(``);
     const [fullName, setFullName] = useState("");
     const [isSeller, setIsSeller] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
@@ -66,7 +67,7 @@ function App() {
                     {
                         isAdmin ?
                             <div className="row">
-                                <UserList/>
+                                <UserList login={login} password={password}/>
                             </div>
                             :
                             isSeller ?
@@ -79,7 +80,9 @@ function App() {
                                 <div className="row">
                                     <Products listProducts={allProducts} setListProducts={setAllProducts}
                                               listProducts2={takenProducts} setListProducts2={setTakenProducts}/>
-                                    <CurrentUser login={login} setLogin={setLogin} setFullName={setFullName}
+                                    <CurrentUser login={login} setLogin={setLogin}
+                                                 password={password} setPassword={setPassword}
+                                                 setFullName={setFullName}
                                                  listProducts={takenProducts} setListProducts={setTakenProducts}
                                                  listProducts2={takenProducts} setListProducts2={setTakenProducts}
                                                  setIsSeller={setIsSeller} setIsAdmin={setIsAdmin}

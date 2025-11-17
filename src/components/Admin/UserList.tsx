@@ -1,20 +1,17 @@
-import {type ReactNode, useContext, useEffect, useState} from "react";
+import {type ReactNode, useEffect, useState} from "react";
 import {SERVER_URL} from "../../utils/Urls.ts";
-import type {UserDto} from "../../utils/Interfaces.ts";
-import {mainContext} from "../../utils/Context.ts";
-import Encode from "../User/Encode.ts";
+import type {UserDto, UserListProps} from "../../utils/Interfaces.ts";
 import OneUser from "./OneUser.tsx";
 import check from "../../utils/Check.ts";
 
-function UserList(): ReactNode {
-    const {login} = useContext(mainContext);
+function UserList({login, password}: UserListProps): ReactNode {
 
     const emptyList: UserDto[] = [];
     const [userList, setUserList] = useState(emptyList);
 
     const refreshUserlist = () => {
         const myHeaders = new Headers();
-        myHeaders.append("Authorization", "Basic " + Encode(login));
+        myHeaders.append("Authorization", "Basic " + btoa(login + ":" + password));
 
         fetch(SERVER_URL + "user/showall", {headers: myHeaders})
             .then(response => response.json())
@@ -28,8 +25,8 @@ function UserList(): ReactNode {
 
     useEffect(() => {
         login &&
-         refreshUserlist();
-    }, [login]);
+        refreshUserlist();
+    }, [login, password]);
 
 
     return (
@@ -43,7 +40,8 @@ function UserList(): ReactNode {
             </tr>
             {
                 userList.map(user => (
-                    <OneUser user={user} refreshUserlist={refreshUserlist} key={user.login}/>
+                    <OneUser user={user} refreshUserlist={refreshUserlist} key={user.login}
+                    authString={"Basic " + btoa(login + ":" + password)}/>
                 ))
             }
             </tbody>

@@ -2,7 +2,6 @@ import {type ReactNode, useState} from "react";
 import type {SetAuthProps, UserDto} from "../../utils/Interfaces.ts"
 import Register from "./Register.tsx";
 import {createPortal} from "react-dom";
-import Encode from "./Encode.ts";
 
 function Login({setLogin, setPassword, setFullName, setIsSeller, setIsAdmin}: SetAuthProps): ReactNode {
     const [registration, setRegistration] = useState(false);
@@ -11,12 +10,12 @@ function Login({setLogin, setPassword, setFullName, setIsSeller, setIsAdmin}: Se
 
     const logIn = async () => {
         const myHeaders = new Headers();
-        myHeaders.append("Authorization", "Basic " + Encode(newLogin));
+        myHeaders.append("Authorization", "Basic " + btoa(newLogin + ":" + newPassword));
 
         const requestOptions = {
             method: "POST",
-            headers: myHeaders,
-            redirect: "follow"
+            headers: myHeaders //,
+            //redirect: "follow"
         };
 
         fetch("http://localhost:8080/user/login", requestOptions)
@@ -26,6 +25,7 @@ function Login({setLogin, setPassword, setFullName, setIsSeller, setIsAdmin}: Se
 
                 setLogin(newLogin);
 //                setLogin(result.login)
+                setPassword(newPassword);
 
                 setFullName(result.fullName);
                 setIsSeller(result.roles.includes("SELLER"));

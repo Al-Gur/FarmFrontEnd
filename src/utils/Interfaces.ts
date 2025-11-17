@@ -70,6 +70,8 @@ export interface AddProductProps {
 export interface UserProps {
     login: string,
     setLogin: (login: string) => void,
+    password: string,
+    setPassword: (password: string) => void,
     setFullName: (fullName: string) => void,
     listProducts: Product[],
     setListProducts: (list: Product[]) => void
@@ -113,7 +115,8 @@ export interface UserDto {
 
 export interface OneUserProps {
     user: UserDto,
-    refreshUserlist: () => void
+    refreshUserlist: () => void,
+    authString: string
 }
 
 
@@ -129,4 +132,9 @@ export const menuNames = ["HOME", "ABOUT", "FEEDBACK", "ACCOUNT", "LOGOUT"]
 export interface ModalProps {
     onClose: () => void,
     children: Element
+}
+
+export interface UserListProps {
+    login: string,
+    password: string
 }
