@@ -1,5 +1,5 @@
 import {type ReactNode, useState} from "react";
-import type {RegisterProps} from "../../utils/Interfaces.ts"
+import type {RegisterProps, UserDto} from "../../utils/Interfaces.ts"
 import '../Common/FarmStyles.css'
 import './Register.css'
 import {SERVER_URL} from "../../utils/Urls.ts";
