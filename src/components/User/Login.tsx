@@ -37,7 +37,8 @@ function Login({setLogin, setPassword, setFullName, setIsSeller, setIsAdmin}: Se
     return (
         registration ?
             createPortal(
-                <Register setLogin={setLogin} setPassword={setPassword} setRegistration={setRegistration}/>
+                <Register setLogin={setLogin} setPassword={setPassword} setFullName={setFullName}
+                          setRegistration={setRegistration}/>
                 , document.body)
             :
             <div className="container card bg-success-subtle">

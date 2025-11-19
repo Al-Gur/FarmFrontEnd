@@ -104,6 +104,7 @@ export interface SetAuthProps {
 export interface RegisterProps {
     setLogin: (login: string) => void,
     setPassword: (password: string) => void,
+    setFullName: (fullName: string) => void,
     setRegistration: (reg: boolean) => void,
 }
 

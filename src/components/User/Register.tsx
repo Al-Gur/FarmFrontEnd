@@ -2,8 +2,9 @@ import {type ReactNode, useState} from "react";
 import type {RegisterProps} from "../../utils/Interfaces.ts"
 import '../Common/FarmStyles.css'
 import './Register.css'
+import {SERVER_URL} from "../../utils/Urls.ts";
 
-function Register({setLogin, setPassword, setRegistration}: RegisterProps): ReactNode {
+function Register({setLogin, setPassword, setFullName, setRegistration}: RegisterProps): ReactNode {
     const [newLogin, setNewLogin] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [newPasswordCopy, setNewPasswordCopy] = useState("");
@@ -13,22 +14,37 @@ function Register({setLogin, setPassword, setRegistration}: RegisterProps): Reac
     const [newAddress, setNewAddress] = useState("");
 
     const tryRegister = async () => {
-        /*        const myHeaders = new Headers();
-                myHeaders.append("Authorization", "Basic Sm9objoxMjM=");
+
+        const newUser = {
+            login: newLogin,
+            password: newPassword,
+            fullName: newFullName
+        };
+        if (newPassword != newPasswordCopy) {
+            return;
+        }
+        const myHeaders = new Headers();
+        myHeaders.append("Authorization", "Basic Sm9objoxMjM=");
+        myHeaders.append("Content-Type", "application/json");
 
                 const requestOptions = {
                     method: "POST",
-                    headers: myHeaders,
-                    redirect: "follow"
+                    body: JSON.stringify(newUser),
+                    headers: myHeaders
                 };
+        console.log(SERVER_URL + "user/register");
 
-                fetch("http://localhost:8080/user/login", requestOptions)
-                    .then((response) => response.json())
+                fetch("http://localhost:8080/user/register", requestOptions)
+                    .then((response) => {
+                        console.log(response)
+                        return response.json()})
                     .then((result: UserDto) => {
                         console.log(result);
-                        setLogin(result.login)
+                        setLogin(result.login);
+                        setPassword(newPassword);
+                        setFullName(result.fullName);
                     })
-                    .catch((error) => console.error(error));*/
+                    .catch((error) => console.error(error));
     }
 
     return (
