@@ -36,6 +36,9 @@ function UserList({login, password}: UserListProps): ReactNode {
                 <th><b>Users</b></th>
                 <th>Login</th>
                 <th>Full name</th>
+                <th>E-mail</th>
+                <th>Phone</th>
+                <th>Address</th>
                 <th>Roles</th>
             </tr>
             {

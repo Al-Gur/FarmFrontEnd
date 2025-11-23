@@ -111,6 +111,9 @@ export interface RegisterProps {
 export interface UserDto {
     login: string,
     fullName: string,
+    email: string,
+    phone: string,
+    address: string,
     roles: string[]
 }
 

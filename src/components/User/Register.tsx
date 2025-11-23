@@ -18,13 +18,17 @@ function Register({setLogin, setPassword, setFullName, setRegistration}: Registe
         const newUser = {
             login: newLogin,
             password: newPassword,
-            fullName: newFullName
+            fullName: newFullName,
+            email: newEMail,
+            phone: newPhone,
+            address: newAddress,
+            seller: false
         };
         if (newPassword != newPasswordCopy) {
             return;
         }
         const myHeaders = new Headers();
-        myHeaders.append("Authorization", "Basic Sm9objoxMjM=");
+        //myHeaders.append("Authorization", "Basic Sm9objoxMjM=");
         myHeaders.append("Content-Type", "application/json");
 
                 const requestOptions = {
@@ -32,11 +36,10 @@ function Register({setLogin, setPassword, setFullName, setRegistration}: Registe
                     body: JSON.stringify(newUser),
                     headers: myHeaders
                 };
-        console.log(SERVER_URL + "user/register");
 
-                fetch("http://localhost:8080/user/register", requestOptions)
+                fetch(SERVER_URL + "user/register", requestOptions)
                     .then((response) => {
-                        console.log(response)
+                        console.log(response);
                         return response.json()})
                     .then((result: UserDto) => {
                         console.log(result);

@@ -1,10 +1,7 @@
-import {type ReactNode, type Ref, useContext, useRef, useState} from "react";
+import {type ReactNode, type Ref, useRef, useState} from "react";
 import type {OneUserProps} from "../../utils/Interfaces.ts";
 import ModalWindow from "../Common/ModalWindow.tsx";
 import {SERVER_URL} from "../../utils/Urls.ts";
-import Encode from "../User/Encode.ts";
-import {mainContext} from "../../utils/Context.ts";
-import check from "../../utils/Check.ts";
 
 function OneUser({user, refreshUserlist, authString}: OneUserProps): ReactNode {
     const newRoleRef: Ref<HTMLSelectElement> = useRef(null);
@@ -69,6 +66,9 @@ function OneUser({user, refreshUserlist, authString}: OneUserProps): ReactNode {
             </td>
             <td>{user.login}</td>
             <td>{user.fullName}</td>
+            <td>{user.email}</td>
+            <td>{user.phone}</td>
+            <td>{user.address}</td>
             <td>{user.roles.map(role => "[" + role + "] ")}</td>
             {
                 editing &&
